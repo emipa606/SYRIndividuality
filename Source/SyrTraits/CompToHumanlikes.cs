@@ -1,31 +1,22 @@
-﻿using HarmonyLib;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Reflection;
-using RimWorld;
 using Verse;
-using UnityEngine;
 
-namespace SyrTraits
+namespace SyrTraits;
+
+[StaticConstructorOnStartup]
+public static class CompToHumanlikes
 {
-    [StaticConstructorOnStartup]
-    public static class CompToHumanlikes
+    static CompToHumanlikes()
     {
-        static CompToHumanlikes()
-        {
-            AddCompToHumanlikes();
-        }
+        AddCompToHumanlikes();
+    }
 
-        public static void AddCompToHumanlikes()
+    public static void AddCompToHumanlikes()
+    {
+        foreach (var allDef in DefDatabase<ThingDef>.AllDefs)
         {
-            foreach (ThingDef thingDef in DefDatabase<ThingDef>.AllDefs)
+            if (allDef.race is { intelligence: Intelligence.Humanlike } && !allDef.IsCorpse)
             {
-                if (thingDef.race != null && thingDef.race.intelligence == Intelligence.Humanlike)
-                {
-                    thingDef.comps.Add(new CompProperties_Individuality());
-                }
+                allDef.comps.Add(new CompProperties_Individuality());
             }
         }
     }

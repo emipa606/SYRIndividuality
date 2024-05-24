@@ -1,43 +1,33 @@
-﻿using HarmonyLib;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Reflection;
 using RimWorld;
 using Verse;
-using UnityEngine;
 
-namespace SyrTraits
+namespace SyrTraits;
+
+public class StatWorker_PsychicSensitivity : StatWorker
 {
-    public class StatWorker_PsychicSensitivity : StatWorker
+    public override float GetValueUnfinalized(StatRequest req, bool applyPostProcess = true)
     {
-        public override float GetValueUnfinalized(StatRequest req, bool applyPostProcess = true)
+        if (req.Thing.TryGetComp<CompIndividuality>() != null)
         {
-            CompIndividuality comp = req.Thing.TryGetComp<CompIndividuality>();
-            if (comp != null)
-            {
-                return base.GetValueUnfinalized(req, applyPostProcess) + req.Thing.TryGetComp<CompIndividuality>().PsychicFactor;
-            }
-            else
-            {
-                return base.GetValueUnfinalized(req, applyPostProcess);
-            }
+            return base.GetValueUnfinalized(req, applyPostProcess) +
+                   req.Thing.TryGetComp<CompIndividuality>().PsychicFactor;
         }
-        public override string GetExplanationUnfinalized(StatRequest req, ToStringNumberSense numberSense)
+
+        return base.GetValueUnfinalized(req, applyPostProcess);
+    }
+
+    public override string GetExplanationUnfinalized(StatRequest req, ToStringNumberSense numberSense)
+    {
+        var stringBuilder = new StringBuilder();
+        var compIndividuality = req.Thing.TryGetComp<CompIndividuality>();
+        if (compIndividuality == null)
         {
-            StringBuilder stringBuilder = new StringBuilder();
-            
-            CompIndividuality comp = req.Thing.TryGetComp<CompIndividuality>();
-            if (comp != null)
-            {
-                stringBuilder.AppendLine("PsychicFactor".Translate() + ": " + stat.ValueToString(comp.PsychicFactor, ToStringNumberSense.Offset));
-                return base.GetExplanationUnfinalized(req, numberSense) + "\n" + stringBuilder.ToString().TrimEndNewlines();
-            }
-            else
-            {
-                return base.GetExplanationUnfinalized(req, numberSense);
-            }
+            return base.GetExplanationUnfinalized(req, numberSense);
         }
+
+        stringBuilder.AppendLine("PsychicFactor".Translate() + ": " +
+                                 stat.ValueToString(compIndividuality.PsychicFactor, ToStringNumberSense.Offset));
+        return $"{base.GetExplanationUnfinalized(req, numberSense)}\n{stringBuilder.ToString().TrimEndNewlines()}";
     }
 }

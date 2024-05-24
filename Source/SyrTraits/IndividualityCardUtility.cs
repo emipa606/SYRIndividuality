@@ -1,203 +1,240 @@
-﻿using HarmonyLib;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Reflection;
 using RimWorld;
-using Verse;
 using UnityEngine;
+using Verse;
 using Verse.Sound;
 
-namespace SyrTraits
+namespace SyrTraits;
+
+public static class IndividualityCardUtility
 {
-    public static class IndividualityCardUtility
+    public enum ScrollDirection
     {
-        public static bool editMode = false;
-        public static void DrawIndividualityCard(Rect rect, Pawn pawn)
+        Up,
+        Down
+    }
+
+    public static bool editMode;
+
+    public static void DrawIndividualityCard(Rect rect, Pawn pawn)
+    {
+        var compIndividuality = pawn.TryGetComp<CompIndividuality>();
+        if (pawn == null || compIndividuality == null)
         {
-            CompIndividuality comp = pawn.TryGetComp<CompIndividuality>();
-            if (pawn != null && comp != null)
+            return;
+        }
+
+        Widgets.ThingIcon(new Rect(0f, 10f, 40f, 40f), pawn);
+        Text.Font = GameFont.Medium;
+        var rect2 = new Rect(56f, 0f, rect.width, 30f);
+        Widgets.Label(rect2, pawn.Name.ToStringShort);
+        Text.Font = GameFont.Tiny;
+        var num = rect2.y + rect2.height;
+        var rect3 = new Rect(56f, num, rect.width, 24f);
+        Widgets.Label(rect3, "IndividualityWindow".Translate());
+        Text.Font = GameFont.Small;
+        num += rect3.height + 17f;
+        if (!SyrIndividuality.RomanceDisabled)
+        {
+            var rect4 = new Rect(0f, num, rect.width - 10f, 24f);
+            Widgets.Label(new Rect(10f, num, rect.width, 24f),
+                string.Concat("SexualityPawn".Translate() + ": ", compIndividuality.sexuality.ToString()));
+            TipSignal tip = "SexualityPawnTooltip".Translate();
+            TooltipHandler.TipRegion(rect4, tip);
+            Widgets.DrawHighlightIfMouseover(rect4);
+            num += rect4.height + 2f;
+            var rect5 = new Rect(0f, num, rect.width - 10f, 24f);
+            Widgets.Label(new Rect(10f, num, rect.width, 24f),
+                "RomanceFactor".Translate() + ": " +
+                (compIndividuality.RomanceFactor * 2f).ToStringByStyle(ToStringStyle.PercentZero));
+            TipSignal tip2 = "RomanceFactorTooltip".Translate();
+            TooltipHandler.TipRegion(rect5, tip2);
+            Widgets.DrawHighlightIfMouseover(rect5);
+            num += rect5.height + 2f;
+            if (editMode)
             {
-                Rect iconRect = new Rect(0f, 10f, 40f, 40f);
-                Widgets.ThingIcon(iconRect, pawn, 1f);
-                Text.Font = GameFont.Medium;
-                Rect nameRect = new Rect(56f, 0f, rect.width, 30f);
-                Widgets.Label(nameRect, pawn.Name.ToStringShort);
-                Text.Font = GameFont.Tiny;
-                float num = nameRect.y + nameRect.height;
-                Rect titleRect = new Rect(56f, num, rect.width, 24f);
-                Widgets.Label(titleRect, "IndividualityWindow".Translate());
-                Text.Font = GameFont.Small;
-                num += titleRect.height + 17f;
-                if (!SyrIndividuality.RomanceDisabled)
+                if (ScrolledDown(rect4, true) || LeftClicked(rect4))
                 {
-                    Rect rect2 = new Rect(0f, num, rect.width - 10f, 24f);
-                    Widgets.Label(new Rect(10f, num, rect.width, 24f), "SexualityPawn".Translate() + ": " + comp.sexuality);
-                    TipSignal SexualityPawnTooltip = "SexualityPawnTooltip".Translate();
-                    TooltipHandler.TipRegion(rect2, SexualityPawnTooltip);
-                    Widgets.DrawHighlightIfMouseover(rect2);
-                    num += rect2.height + 2f;
-                    Rect rect3 = new Rect(0f, num, rect.width - 10f, 24f);
-                    Widgets.Label(new Rect(10f, num, rect.width, 24f), "RomanceFactor".Translate() + ": " + (comp.RomanceFactor * 2).ToStringByStyle(ToStringStyle.PercentZero));
-                    TipSignal RomanceFactorTooltip = "RomanceFactorTooltip".Translate();
-                    TooltipHandler.TipRegion(rect3, RomanceFactorTooltip);
-                    Widgets.DrawHighlightIfMouseover(rect3);
-                    num += rect3.height + 2f;
-                    if (editMode)
+                    SoundDefOf.DragSlider.PlayOneShotOnCamera();
+                    compIndividuality.sexuality++;
+                    if ((int)compIndividuality.sexuality > 4)
                     {
-                        if (ScrolledDown(rect2, true) || LeftClicked(rect2))
-                        {
-                            SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
-                            comp.sexuality += 1;
-                            if (comp.sexuality > CompIndividuality.Sexuality.Asexual)
-                            {
-                                comp.sexuality = CompIndividuality.Sexuality.Straight;
-                            }
-                        }
-                        else if (ScrolledUp(rect2, true) || RightClicked(rect2))
-                        {
-                            SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
-                            comp.sexuality -= 1;
-                            if (comp.sexuality < CompIndividuality.Sexuality.Straight)
-                            {
-                                comp.sexuality = CompIndividuality.Sexuality.Asexual;
-                            }
-                        }
-                        else if (ScrolledDown(rect3, true) || LeftClicked(rect3))
-                        {
-                            SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
-                            comp.RomanceFactor += 0.1f;
-                            if (comp.RomanceFactor > 1.05f)
-                            {
-                                comp.RomanceFactor = 0.1f;
-                            }
-                        }
-                        else if (ScrolledUp(rect3, true) || RightClicked(rect3))
-                        {
-                            SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
-                            comp.RomanceFactor -= 0.1f;
-                            if (comp.RomanceFactor < 0.05f)
-                            {
-                                comp.RomanceFactor = 1f;
-                            }
-                        }
+                        compIndividuality.sexuality = CompIndividuality.Sexuality.Straight;
                     }
                 }
-                Rect rect4 = new Rect(0f, num, rect.width - 10f, 24f);
-                Widgets.Label(new Rect(10f, num, rect.width, 24f), "PsychicFactor".Translate() + ": " + comp.PsychicFactor.ToStringByStyle(ToStringStyle.PercentZero, ToStringNumberSense.Offset));
-                TipSignal PsychicFactorTooltip = "PsychicFactorTooltip".Translate();
-                TooltipHandler.TipRegion(rect4, PsychicFactorTooltip);
-                Widgets.DrawHighlightIfMouseover(rect4);
-                num += rect4.height + 2f;
-                Rect rect5 = new Rect(0f, num, rect.width - 10f, 24f);
-                Widgets.Label(new Rect(10f, num, rect.width, 24f), "BodyWeight".Translate() + ": " + (comp.BodyWeight + pawn.def.statBases.Find(s => s.stat == StatDefOf.Mass).value * pawn.BodySize + " kg (" + pawn.story.bodyType + ")"));
-                TipSignal BodyWeightTooltip = "BodyWeightTooltip".Translate();
-                TooltipHandler.TipRegion(rect5, BodyWeightTooltip);
-                Widgets.DrawHighlightIfMouseover(rect5);
-                num += rect5.height + 7f;
-                Rect editModeTooltip = new Rect(10f, num, rect.width, 24f);
-                if (editMode)
+                else if (ScrolledUp(rect4, true) || RightClicked(rect4))
                 {
-                    GUI.color = Color.red;
-                    Text.Font = GameFont.Tiny;
-                    Widgets.Label(editModeTooltip, "SyrIndividuality_EditModeTooltip".Translate());
-                    GUI.color = Color.white;
-                    Text.Font = GameFont.Small;
-                }
-                num += editModeTooltip.height + 13f;
-                Rect checkBoxRect = new Rect(rect.width / 2 - 90f, num, 180f, 40f);
-                bool leftClick = Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.Mouse0;
-                bool rightClick = Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.Mouse1;
-                if (!editMode)
-                {
-                    if (Widgets.ButtonText(checkBoxRect, "SyrIndividuality_EditModeOn".Translate()))
+                    SoundDefOf.DragSlider.PlayOneShotOnCamera();
+                    compIndividuality.sexuality--;
+                    if ((int)compIndividuality.sexuality < 1)
                     {
-                        SoundDefOf.Tick_High.PlayOneShotOnCamera(null);
-                        editMode = true;
+                        compIndividuality.sexuality = CompIndividuality.Sexuality.Asexual;
                     }
                 }
-                else
+                else if (ScrolledDown(rect5, true) || LeftClicked(rect5))
                 {
-                    if (Widgets.ButtonText(checkBoxRect, "SyrIndividuality_EditModeOff".Translate()))
+                    SoundDefOf.DragSlider.PlayOneShotOnCamera();
+                    compIndividuality.RomanceFactor += 0.1f;
+                    if (compIndividuality.RomanceFactor > 1.05f)
                     {
-                        SoundDefOf.Tick_Low.PlayOneShotOnCamera(null);
-                        editMode = false;
+                        compIndividuality.RomanceFactor = 0.1f;
                     }
-                    if (ScrolledDown(rect4, true) || LeftClicked(rect4))
+                }
+                else if (ScrolledUp(rect5, true) || RightClicked(rect5))
+                {
+                    SoundDefOf.DragSlider.PlayOneShotOnCamera();
+                    compIndividuality.RomanceFactor -= 0.1f;
+                    if (compIndividuality.RomanceFactor < 0.05f)
                     {
-                        SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
-                        comp.PsychicFactor += 0.2f;
-                        if (comp.PsychicFactor > 1f)
-                        {
-                            comp.PsychicFactor = -1f;
-                        }
-                    }
-                    else if (ScrolledUp(rect4, true) || RightClicked(rect4))
-                    {
-                        SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
-                        comp.PsychicFactor -= 0.2f;
-                        if (comp.PsychicFactor < -1f)
-                        {
-                            comp.PsychicFactor = 1f;
-                        }
-                    }
-                    else if (ScrolledDown(rect5, true) || LeftClicked(rect5))
-                    {
-                        SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
-                        comp.BodyWeight += 10;
-                        if (comp.BodyWeight > 40)
-                        {
-                            comp.BodyWeight = -20;
-                        }
-                    }
-                    else if (ScrolledUp(rect5, true) || RightClicked(rect5))
-                    {
-                        SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
-                        comp.BodyWeight -= 10;
-                        if (comp.BodyWeight < -20)
-                        {
-                            comp.BodyWeight = 40;
-                        }
+                        compIndividuality.RomanceFactor = 1f;
                     }
                 }
             }
         }
 
-        public static bool Scrolled(Rect rect, ScrollDirection direction, bool stopPropagation)
+        var rect6 = new Rect(0f, num, rect.width - 10f, 24f);
+        Widgets.Label(new Rect(10f, num, rect.width, 24f),
+            "PsychicFactor".Translate() + ": " +
+            compIndividuality.PsychicFactor.ToStringByStyle(ToStringStyle.PercentZero, ToStringNumberSense.Offset));
+        TipSignal tip3 = "PsychicFactorTooltip".Translate();
+        TooltipHandler.TipRegion(rect6, tip3);
+        Widgets.DrawHighlightIfMouseover(rect6);
+        num += rect6.height + 2f;
+        var rect7 = new Rect(0f, num, rect.width - 10f, 24f);
+        Widgets.Label(new Rect(10f, num, rect.width, 24f),
+            "BodyWeight".Translate() + ": " + (compIndividuality.BodyWeight +
+                                               (pawn.def.statBases.Find(s => s.stat == StatDefOf.Mass).value *
+                                                pawn.BodySize) + " kg (" + pawn.story.bodyType + ")"));
+        TipSignal tip4 = "BodyWeightTooltip".Translate();
+        TooltipHandler.TipRegion(rect7, tip4);
+        Widgets.DrawHighlightIfMouseover(rect7);
+        num += rect7.height + 7f;
+        var rect8 = new Rect(10f, num, rect.width, 24f);
+        if (editMode)
         {
-            bool flag = Event.current.type == EventType.ScrollWheel && ((Event.current.delta.y > 0f && direction == ScrollDirection.Up) || (Event.current.delta.y < 0f && direction == ScrollDirection.Down)) && Mouse.IsOver(rect);
-            if (flag && stopPropagation)
-            {
-                Event.current.Use();
-            }
-            return flag;
-        }
-        public static bool ScrolledUp(Rect rect, bool stopPropagation = false)
-        {
-            return Scrolled(rect, ScrollDirection.Up, stopPropagation);
-        }
-        public static bool ScrolledDown(Rect rect, bool stopPropagation = false)
-        {
-            return Scrolled(rect, ScrollDirection.Down, stopPropagation);
-        }
-        public enum ScrollDirection
-        {
-            Up,
-            Down
+            GUI.color = Color.red;
+            Text.Font = GameFont.Tiny;
+            Widgets.Label(rect8, "SyrIndividuality_EditModeTooltip".Translate());
+            GUI.color = Color.white;
+            Text.Font = GameFont.Small;
         }
 
-        public static bool Clicked(Rect rect, int button = 0)
+        num += rect8.height + 13f;
+        var rect9 = new Rect((rect.width / 2f) - 90f, num, 180f, 40f);
+        if (Event.current.type == EventType.KeyDown)
         {
-            return Event.current.type == EventType.MouseDown && Event.current.button == button && Mouse.IsOver(rect);
+            _ = Event.current.keyCode == KeyCode.Mouse0;
         }
-        public static bool LeftClicked(Rect rect)
+        else
         {
-            return Clicked(rect, 0);
+            _ = 0;
         }
-        public static bool RightClicked(Rect rect)
+
+        if (Event.current.type == EventType.KeyDown)
         {
-            return Clicked(rect, 1);
+            _ = Event.current.keyCode == KeyCode.Mouse1;
         }
+        else
+        {
+            _ = 0;
+        }
+
+        if (!editMode)
+        {
+            if (!Widgets.ButtonText(rect9, "SyrIndividuality_EditModeOn".Translate()))
+            {
+                return;
+            }
+
+            SoundDefOf.Tick_High.PlayOneShotOnCamera();
+            editMode = true;
+
+            return;
+        }
+
+        if (Widgets.ButtonText(rect9, "SyrIndividuality_EditModeOff".Translate()))
+        {
+            SoundDefOf.Tick_Low.PlayOneShotOnCamera();
+            editMode = false;
+        }
+
+        if (ScrolledDown(rect6, true) || LeftClicked(rect6))
+        {
+            SoundDefOf.DragSlider.PlayOneShotOnCamera();
+            compIndividuality.PsychicFactor += 0.2f;
+            if (compIndividuality.PsychicFactor > 1f)
+            {
+                compIndividuality.PsychicFactor = -1f;
+            }
+        }
+        else if (ScrolledUp(rect6, true) || RightClicked(rect6))
+        {
+            SoundDefOf.DragSlider.PlayOneShotOnCamera();
+            compIndividuality.PsychicFactor -= 0.2f;
+            if (compIndividuality.PsychicFactor < -1f)
+            {
+                compIndividuality.PsychicFactor = 1f;
+            }
+        }
+        else if (ScrolledDown(rect7, true) || LeftClicked(rect7))
+        {
+            SoundDefOf.DragSlider.PlayOneShotOnCamera();
+            compIndividuality.BodyWeight += 10;
+            if (compIndividuality.BodyWeight > 40)
+            {
+                compIndividuality.BodyWeight = -20;
+            }
+        }
+        else if (ScrolledUp(rect7, true) || RightClicked(rect7))
+        {
+            SoundDefOf.DragSlider.PlayOneShotOnCamera();
+            compIndividuality.BodyWeight -= 10;
+            if (compIndividuality.BodyWeight < -20)
+            {
+                compIndividuality.BodyWeight = 40;
+            }
+        }
+    }
+
+    public static bool Scrolled(Rect rect, ScrollDirection direction, bool stopPropagation)
+    {
+        var num = Event.current.type == EventType.ScrollWheel &&
+                  (Event.current.delta.y > 0f && direction == ScrollDirection.Up ||
+                   Event.current.delta.y < 0f && direction == ScrollDirection.Down) && Mouse.IsOver(rect);
+        if (num && stopPropagation)
+        {
+            Event.current.Use();
+        }
+
+        return num;
+    }
+
+    public static bool ScrolledUp(Rect rect, bool stopPropagation = false)
+    {
+        return Scrolled(rect, ScrollDirection.Up, stopPropagation);
+    }
+
+    public static bool ScrolledDown(Rect rect, bool stopPropagation = false)
+    {
+        return Scrolled(rect, ScrollDirection.Down, stopPropagation);
+    }
+
+    public static bool Clicked(Rect rect, int button = 0)
+    {
+        if (Event.current.type == EventType.MouseDown && Event.current.button == button)
+        {
+            return Mouse.IsOver(rect);
+        }
+
+        return false;
+    }
+
+    public static bool LeftClicked(Rect rect)
+    {
+        return Clicked(rect);
+    }
+
+    public static bool RightClicked(Rect rect)
+    {
+        return Clicked(rect, 1);
     }
 }

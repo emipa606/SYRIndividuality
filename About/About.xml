@@ -1,35 +1,147 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-	<name>[SYR] Individuality</name>
-	<author>Syrchalis</author>
-	<supportedVersions>
-		<li>1.1</li>
-		<li>1.2</li>
-		<li>1.3</li>
-	</supportedVersions>
-	<url>https://ludeon.com/forums/index.php?topic=43449</url>
-	<description>Adds new traits, rebalances vanilla traits and allows pawns to have randomized stats. 
-	
-Pawns will now have a random body weight, random psychic sensitivity (replaces the corresponding traits), random confidence (chance they try to romance others) and a random sexuality (replaces gay trait) - the latter includes bisexual. Please do not request Kinsey Scale or more sexuality types.
-	
-Design goal is to make every trait have up- and downsides, but these do not need to be equal. There is still good and bad traits. You can find something positive about most traits and something negative about most traits. Some traits that are just slightly bad/good will not have an up/downside added (like kind, creepy breathing etc.).
+  <name>[SYR] Individuality (Continued)</name>
+  <packageId>Mlie.SYRIndividuality</packageId>
+  <author>Syrchalis</author>
+  <url>https://github.com/emipa606/SYRIndividuality</url>
+  <supportedVersions>
+    <li>1.1</li>
+    <li>1.2</li>
+    <li>1.3</li>
+    <li>1.4</li>
+    <li>1.5</li>
+  </supportedVersions>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+      <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>brrainz.harmony</li>
+  </loadAfter>
+  <description>[img]https://i.imgur.com/buuPQel.png[/img]
+Update of Syrchaliss mod https://steamcommunity.com/sharedfiles/filedetails/?id=1497105115
 
-The new traits are mostly work-related traits that make pawns better in one area and worse in another. Generally the improvement is bigger than the penalty, so they can be considered good traits.
+[img]https://i.imgur.com/pufA0kM.png[/img]
 
-Please do not ask for Prepare Carefully compatibility, it's a lot of work. Just accept that these things are random (for now).</description>
-	<packageId>syrchalis.individuality</packageId>
-	<modDependencies>
-		<li>
-			<packageId>brrainz.harmony</packageId>
-			<displayName>Harmony</displayName>
-			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
-			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
-		</li>
-	</modDependencies>
-	<incompatibleWith>
-		<li>neceros.badcanbegood</li>
-	</incompatibleWith>
-	<loadAfter>
-    <li>syrchalis.traitvalue</li>
-	</loadAfter>
+[table]
+    [tr][td][url=https://dsc.gg/mlie][img]https://i.imgur.com/zdzzBrc.png[/img][/url][/td] [td][url=https://github.com/emipa606/SYRIndividuality][img]https://i.imgur.com/kTkpTOE.png[/img][/url][/td]
+    [/tr]
+    [tr]
+        [td][img]https://i.imgur.com/WjDSfUn.png[/img][/td]
+        [td][img]https://i.imgur.com/6KqTKks.png[/img][/td]
+    [/tr]
+[/table]
+	
+[img]https://i.imgur.com/Z4GOv8H.png[/img]
+[h2][b]Adds new traits, rebalances vanilla traits and shifts boring traits.[/b][/h2]
+
+[img]https://i.imgur.com/jdqGJkN.png[/img]
+
+[img]https://i.imgur.com/s8csNp7.png[/img]
+
+[b]What is Individuality?[/b]
+[list]
+[*] Adds exciting new traits that are not just stat bonuses (with C#)
+[*] Rebalances vanilla traits to give good traits a tiny downside and bad traits an upside
+[*] Gay, Bisexual, Asexual and Psychic Sensitvity are not traits anymore, they are now a stat inside the new individuality window
+[*] Also adds Confidence (romance attempt multiplier) and Body Weight as stats, which are randomized
+[*] Does small tweaks to the romance system (asexual pawns hook up with each other, beauty isn't so binary anymore, and more)[/list]
+
+
+
+[img]https://i.imgur.com/eiAAg6q.png[/img]
+
+[b]Details[/b]
+The sexuality, confidence, weight and psychic sensitvity can be changed anywhere you can open the menu. Enable edit mode and use left- or right-click on the fields. Mouse wheel is also supported.
+
+[b]Content:[/b][list]
+[*]Several new profession-related traits are added
+[*]Most new traits use C# for unique effects, not just boring stat changes
+[*]Vanilla traits are rebalanced
+[*]Good traits get a minor downside
+[*]Bad traits get a minor upside
+[*]You can select with how many traits pawns spawn
+[*]Boring traits are removed
+[*]A new menu inside the pawn - bio tab contains these traits now
+[*]This includes: Sexuality, confidence (romance attempt multiplier), body weight and psychic sensitivity
+[*]Sexuality ratios can be changed in the settings
+[/list]
+
+[b]List of changes to vanilla traits:[/b]
+[list]
+[*]Expert Shooter (better version of Careful Shooter)
+[*]Slothful/Lazy pawns require much less joy
+[*]HardWorker/Industrious need slightly more joy
+[*]Slowpoke pawns need less rest, but are even slower
+[*]FastWalker/Jogger pawns are even faster, but need slightly more rest
+[*]Chemical Interest/Fascination get random inspirations and have less mental breaks
+[*]Teetotaler has 20% global work speed
+[*]Ugly/Staggeringly ugly pawns will not be considered "disfigured", even if they are
+[*]Depressive pawns can only get Sad Wander and Hide in Room mental breaks
+[*]Volatile pawns can only get Tantrum mental breaks
+[*]Neurotic pawns don't break more easily, instead they get a random mood regularly, 
+[*]Very neurotic pawns can get even more extreme moods
+[*]Abrasive never get a mood debuff from being insulted/slighted themselves
+[*]Greedy get special mood bonus for very impressive and better bedrooms
+[*]Jealous don't mind wearing dead man's clothing or pawns getting banished/executed
+[*]Wimps have very high toxic resistance, improved movespeed and can take a little more pain than vanilla
+[*]Tough pawns are slower
+[*]Pyromania has less mental breaks, gets random inspirations regularly
+[/list]
+
+[b]Technical details:[/b][list]
+[*]Keen Eye: You have a varying chance to get 20% of a normal ore's yield. The chance for each ore is the same as when they are generated, so you will mostly get steel. The chance to get ore whenever you mine any sort of stone or ore depends on the tile the pawn is on. For flat it's a 20% chance, for small hills 12%, for large hills 10% and 5% for mountainous. If you have other hilliness types (e.g. impassable map maker) it defaults to 5%.
+[*]Green Thumb: The mood change is between -5 and +5, from 0 to 9 beauty plants (that's flowers) in their bedroom. The thought changes at uneven numbers of plants (1, 3, 5, 7 and 9) respectively.
+[*]Creative Thinker: The scaling with artistic is the same as intellectual, so you can get nearly twice the research speed (minus the base value)
+[*]Slow Learner: The minimum value you can get is -50% if the pawn has 40 or less skill points spread across all skills. The maximum you can get is +150% for 140 points or more. However, your total global learning speed can be reduced further by other traits or by the stat base (e.g. you are playing a race that learns slowly).
+[*]Perfectionist: Will simply add +1 to the quality level 50% of the time, like half a creativity inspiration. This should happen after any other modifier (from other mods for example).
+[*]Animal Friend: The pawn treats every animal as if it had only 90% of it's actual wildness value. This means a megasloth has 87.3% wildness for a pawn with this trait instead of 97%. This makes taming these animals significantly more likely. The manhunter on failed tame chance is completely disabled.
+[*]Steady Hands: Usually self-tending is done with 70% of the pawns medical tend quality. This trait bypasses this check and allows 100% of the medical tend quality to apply.
+[*]Architect: It checks the material you construct something out of. Things that don't allow choosing a material will not be affected. If it has multiple ingredients the same rule applies - if you can choose the material it will apply, for example crematoriums need steel and components, but you can choose the stone type, so it will be affected.
+[/list]
+
+
+
+[img]https://i.imgur.com/BHPtNVt.png[/img]
+
+I highly suggest using [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=1461790308]Harvest Yield[/url][/b] with this mod. Otherwise the trait "Fortunate" becomes rather mediocre, [b]as animal gather yield[/b] and [b]plant harvest yield[/b] do not actually increase the amount you get beyond 100% without this mod.
+
+
+
+[img]https://i.imgur.com/x3y72Eg.png[/img]
+
+[h3][b]Savegames:[/b][/h3]
+[list][*]Adding: Safe
+[*]Removing: Not safe
+[/list]
+
+[h3][b]Incompatibilities:[/b][/h3]
+[list][*]Bad can be good - both mods add upsides to bad traits, you will get a messy mix of both and you will also get errors.
+[/list]
+
+
+
+[img]https://i.imgur.com/1YxHVGs.png[/img]
+
+[quote][h3][b][url=https://steamcommunity.com/workshop/filedetails/?id=1474000866]Syrchalis' Mods[/url][/b][/h3][/quote]
+Collection of my mods for RimWorld
+
+If you enjoy my mods consider dropping me a dime:
+[url=https://ko-fi.com/A0A0IJ2R][img]https://i.imgur.com/QMURwKz.png[/img][/url][url=https://www.patreon.com/syrchali
+
+[img]https://i.imgur.com/PwoNOj4.png[/img]
+[list]
+[*] See if the the error persists if you just have this mod and its requirements active.
+[*] If not, try adding your other mods until it happens again.
+[*] Post your error-log using [url=https://steamcommunity.com/workshop/filedetails/?id=818773962]HugsLib[/url] or the standalone [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404]Uploader[/url] and command Ctrl+F12
+[*] For best support, please use the Discord-channel for error-reporting.
+[*] Do not report errors by making a discussion-thread, I get no notification of that.
+[*] If you have the solution for a problem, please post it to the GitHub repository.
+[*] Use [url=https://github.com/RimSort/RimSort/releases/latest]RimSort[/url] to sort your mods
+[/list]</description>
+  <modVersion IgnoreIfNoMatchingField="True">1.5.1</modVersion>
 </ModMetaData>

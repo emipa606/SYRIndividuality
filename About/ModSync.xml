@@ -1,14 +1,19 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <ModSyncNinjaData>
-  <ID>49aabcd6-be2a-4475-aeb7-1814db779576</ID>
-  <ModName>[SYR] Individuality</ModName>
-  <Version>1.2.0</Version>
+  <ID>dd0b6ada-53e9-4d12-9ed9-8d5f34bf872d</ID>
+  <ModName>[SYR] Individuality (Continued)</ModName>
+  <Version>1.5.1</Version>
   <SaveBreaking>False</SaveBreaking>
   <Host name="Github">
-    <Owner>Syrchalis</Owner>
-    <Project>Individuality</Project>
+    <Owner>emipa606</Owner>
+    <Project>SYRIndividuality</Project>
     <AboutDir>About</AboutDir>
-    <DownloadFrom>ModSyncReleases</DownloadFrom>
+    <DownloadFrom>ModSyncMainPage</DownloadFrom>
     <Branch>master</Branch>
   </Host>
 </ModSyncNinjaData>
+
+
+
+
+

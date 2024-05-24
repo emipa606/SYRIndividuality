@@ -1,8 +1,6 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-
   <SyrTraitsSettingsCategory>Individuality</SyrTraitsSettingsCategory>
-  
   <SyrTraitsTraitCount>Amount of traits pawns spawn with</SyrTraitsTraitCount>
   <SyrTraitsDisabled>Romance features disabled because of</SyrTraitsDisabled>
   <SyrTraitsDisabledPsychology>Psychology is active</SyrTraitsDisabledPsychology>
@@ -16,7 +14,6 @@
   <SyrTraitsSexualityCommonalityAsexual>Asexual</SyrTraitsSexualityCommonalityAsexual>
   <SyrTraitsDefaultSettings>Reset to default</SyrTraitsDefaultSettings>
   <SyrTraitsDefaultSettingsTooltip>Reset settings to default values</SyrTraitsDefaultSettingsTooltip>
-  
   <IndividualityWindow>Individuality</IndividualityWindow>
   <IndividualityTooltip>View individuality</IndividualityTooltip>
   <SexualityPawn>Sexuality</SexualityPawn>
@@ -34,5 +31,5 @@
   <SyrTraitsDaVinciGene>Da Vinci Gene</SyrTraitsDaVinciGene>
   <SyrTraitsSlowLearnerLabel>Slow learner</SyrTraitsSlowLearnerLabel>
   <SyrTraitsSlowLearner>Bonus from total skills</SyrTraitsSlowLearner>
-  
+  <SyrTraitsCurrentModVersion>Installed mod-version: {0}</SyrTraitsCurrentModVersion>
 </LanguageData>
