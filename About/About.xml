@@ -130,9 +130,6 @@ I highly suggest using [b][url=https://steamcommunity.com/sharedfiles/filedetail
 [quote][h3][b][url=https://steamcommunity.com/workshop/filedetails/?id=1474000866]Syrchalis' Mods[/url][/b][/h3][/quote]
 Collection of my mods for RimWorld
 
-If you enjoy my mods consider dropping me a dime:
-[url=https://ko-fi.com/A0A0IJ2R][img]https://i.imgur.com/QMURwKz.png[/img][/url][url=https://www.patreon.com/syrchali
-
 [img]https://i.imgur.com/PwoNOj4.png[/img]
 [list]
 [*] See if the the error persists if you just have this mod and its requirements active.
@@ -142,6 +139,8 @@ If you enjoy my mods consider dropping me a dime:
 [*] Do not report errors by making a discussion-thread, I get no notification of that.
 [*] If you have the solution for a problem, please post it to the GitHub repository.
 [*] Use [url=https://github.com/RimSort/RimSort/releases/latest]RimSort[/url] to sort your mods
-[/list]</description>
-  <modVersion IgnoreIfNoMatchingField="True">1.5.1</modVersion>
+[/list]
+
+[url=https://steamcommunity.com/sharedfiles/filedetails/changelog/3253596705][img]https://img.shields.io/github/v/release/emipa606/SYRIndividuality?label=latest%20version&amp;style=plastic&amp;color=9f1111&amp;labelColor=black[/img][/url]</description>
+  <modVersion IgnoreIfNoMatchingField="True">1.5.2</modVersion>
 </ModMetaData>

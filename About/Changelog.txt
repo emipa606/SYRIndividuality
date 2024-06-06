@@ -1,5 +1,8 @@
 # Changelog for SYRIndividuality
 
+1.5.2 - Romance option should now respect the replacement sexuality methods of the mod
+
+
 1.5.1 - Updated for 1.5
 Used DeepL to update translations for ChineseSimplified, French, German
 

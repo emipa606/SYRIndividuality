@@ -1,4 +1,4 @@
-# [[SYR] Individuality (Continued)]()
+# [[SYR] Individuality (Continued)](https://steamcommunity.com/sharedfiles/filedetails/?id=3253596705)
 
 ![Image](https://i.imgur.com/buuPQel.png)
 Update of Syrchaliss mod https://steamcommunity.com/sharedfiles/filedetails/?id=1497105115
@@ -115,9 +115,6 @@ I highly suggest using **[https://steamcommunity.com/sharedfiles/filedetails/?id
 [/quote]
 Collection of my mods for RimWorld
 
-If you enjoy my mods consider dropping me a dime:
-[https://ko-fi.com/A0A0IJ2R]![Image]((https://i.imgur.com/QMURwKz.png))[url=https://www.patreon.com/syrchali
-
 ![Image](https://i.imgur.com/PwoNOj4.png)
 
 
@@ -130,3 +127,5 @@ If you enjoy my mods consider dropping me a dime:
 -  Use [https://github.com/RimSort/RimSort/releases/latest](RimSort) to sort your mods
 
 
+
+[https://steamcommunity.com/sharedfiles/filedetails/changelog/3253596705]![Image]((https://img.shields.io/github/v/release/emipa606/SYRIndividuality?label=latest%20version&style=plastic&color=9f1111&labelColor=black))
