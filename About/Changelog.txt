@@ -1,5 +1,8 @@
 # Changelog for SYRIndividuality
 
+1.5.3 - Fix mod-compatibility with only TraitDef Straight, for example way better romance. Thanks feeddanoob
+
+
 1.5.2 - Romance option should now respect the replacement sexuality methods of the mod
 
 

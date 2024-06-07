@@ -3,6 +3,8 @@
 ![Image](https://i.imgur.com/buuPQel.png)
 Update of Syrchaliss mod https://steamcommunity.com/sharedfiles/filedetails/?id=1497105115
 
+- Romance option should now respect the replacement sexuality methods of the mod
+
 ![Image](https://i.imgur.com/pufA0kM.png)
 	
 ![Image](https://i.imgur.com/Z4GOv8H.png)
