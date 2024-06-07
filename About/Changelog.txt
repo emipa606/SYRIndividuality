@@ -1,5 +1,8 @@
 # Changelog for SYRIndividuality
 
+1.5.4 - Bug-fix for the faulty patch
+
+
 1.5.3 - Fix mod-compatibility with only TraitDef Straight, for example way better romance. Thanks feeddanoob
 
 
