@@ -502,8 +502,7 @@
     </operations>
   </Operation>
   <Operation Class="PatchOperationConditional">
-    <success>Always</success>
-    <xpath>*/TraitDef[defName = "Polyamorous"]</xpath>
+    <xpath>*/TraitDef[defName = "Polyamorous" or defName = "Straight"]</xpath>
     <match Class="PatchOperationAdd">
       <xpath>*/TraitDef[defName = "Polyamorous" or defName = "Straight"]</xpath>
       <value>
@@ -512,8 +511,7 @@
     </match>
   </Operation>
   <Operation Class="PatchOperationConditional">
-    <success>Always</success>
-    <xpath>*/TraitDef[defName = "Polyamorous"]/commonality</xpath>
+    <xpath>*/TraitDef[defName = "Polyamorous" or defName = "Straight"]/commonality</xpath>
     <match Class="PatchOperationReplace">
       <xpath>*/TraitDef[defName = "Polyamorous" or defName = "Straight"]/commonality</xpath>
       <value>
