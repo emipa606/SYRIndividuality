@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Patch>
   <!-- Why is this redundant mod check here? Isn't this the mod this patch belongs to? -->
   <!-- Yes my dear friend, this is so users of the framework can quickly copy-paste this patch -->

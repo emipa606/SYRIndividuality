@@ -1,5 +1,8 @@
 # Changelog for SYRIndividuality
 
+1.5.5 - Fixed excessive checks for other active mods
+
+
 1.5.4 - Bug-fix for the faulty patch
 
 

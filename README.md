@@ -1,6 +1,7 @@
 # [[SYR] Individuality (Continued)](https://steamcommunity.com/sharedfiles/filedetails/?id=3253596705)
 
 ![Image](https://i.imgur.com/buuPQel.png)
+
 Update of Syrchaliss mod https://steamcommunity.com/sharedfiles/filedetails/?id=1497105115
 
 - Romance option should now respect the replacement sexuality methods of the mod
@@ -8,6 +9,7 @@ Update of Syrchaliss mod https://steamcommunity.com/sharedfiles/filedetails/?id=
 ![Image](https://i.imgur.com/pufA0kM.png)
 	
 ![Image](https://i.imgur.com/Z4GOv8H.png)
+
 ## **Adds new traits, rebalances vanilla traits and shifts boring traits.**
 
 
@@ -88,7 +90,7 @@ The sexuality, confidence, weight and psychic sensitvity can be changed anywhere
 
 ![Image](https://i.imgur.com/BHPtNVt.png)
 
-I highly suggest using **[https://steamcommunity.com/sharedfiles/filedetails/?id=1461790308](Harvest Yield)** with this mod. Otherwise the trait "Fortunate" becomes rather mediocre, **as animal gather yield** and **plant harvest yield** do not actually increase the amount you get beyond 100% without this mod.
+I highly suggest using **[Harvest Yield](https://steamcommunity.com/sharedfiles/filedetails/?id=1461790308)** with this mod. Otherwise the trait "Fortunate" becomes rather mediocre, **as animal gather yield** and **plant harvest yield** do not actually increase the amount you get beyond 100% without this mod.
 
 
 
@@ -113,21 +115,22 @@ I highly suggest using **[https://steamcommunity.com/sharedfiles/filedetails/?id
 
 ![Image](https://i.imgur.com/1YxHVGs.png)
 
-[quote]### **[https://steamcommunity.com/workshop/filedetails/?id=1474000866](Syrchalis' Mods)**
+[quote]### **[Syrchalis' Mods](https://steamcommunity.com/workshop/filedetails/?id=1474000866)**
 [/quote]
 Collection of my mods for RimWorld
 
 ![Image](https://i.imgur.com/PwoNOj4.png)
 
 
+
 -  See if the the error persists if you just have this mod and its requirements active.
 -  If not, try adding your other mods until it happens again.
--  Post your error-log using [https://steamcommunity.com/workshop/filedetails/?id=818773962]HugsLib[/url] or the standalone [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404](Uploader) and command Ctrl+F12
+-  Post your error-log using [HugsLib](https://steamcommunity.com/workshop/filedetails/?id=818773962) or the standalone [Uploader](https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404) and command Ctrl+F12
 -  For best support, please use the Discord-channel for error-reporting.
 -  Do not report errors by making a discussion-thread, I get no notification of that.
 -  If you have the solution for a problem, please post it to the GitHub repository.
--  Use [https://github.com/RimSort/RimSort/releases/latest](RimSort) to sort your mods
+-  Use [RimSort](https://github.com/RimSort/RimSort/releases/latest) to sort your mods
 
 
 
-[https://steamcommunity.com/sharedfiles/filedetails/changelog/3253596705]![Image]((https://img.shields.io/github/v/release/emipa606/SYRIndividuality?label=latest%20version&style=plastic&color=9f1111&labelColor=black))
+[![Image](https://img.shields.io/github/v/release/emipa606/SYRIndividuality?label=latest%20version&style=plastic&color=9f1111&labelColor=black)](https://steamcommunity.com/sharedfiles/filedetails/changelog/3253596705)

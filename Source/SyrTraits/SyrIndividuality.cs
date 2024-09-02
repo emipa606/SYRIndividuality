@@ -9,31 +9,23 @@ public class SyrIndividuality : Mod
 {
     public static SyrIndividualitySettings settings;
     private static string currentVersion;
+    private static bool forcedDisabled;
+
+    public static bool RationalRomanceActive;
+
+    public static bool PsychologyActive;
 
     public SyrIndividuality(ModContentPack content)
         : base(content)
     {
+        PsychologyActive = ModsConfig.ActiveModsInLoadOrder.Any(m => m.Name.Contains("Psychology"));
+        RationalRomanceActive = ModsConfig.ActiveModsInLoadOrder.Any(m => m.Name.Contains("Rational Romance"));
+        forcedDisabled = PsychologyActive || RationalRomanceActive;
         settings = GetSettings<SyrIndividualitySettings>();
         currentVersion = VersionFromManifest.GetVersionFromModMetaData(content.ModMetaData);
     }
 
-    public static bool RationalRomanceActive =>
-        ModsConfig.ActiveModsInLoadOrder.Any(m => m.Name.Contains("Rational Romance"));
-
-    public static bool PsychologyActive => ModsConfig.ActiveModsInLoadOrder.Any(m => m.Name.Contains("Psychology"));
-
-    public static bool RomanceDisabled
-    {
-        get
-        {
-            if (!PsychologyActive && !RationalRomanceActive)
-            {
-                return SyrIndividualitySettings.disableRomance;
-            }
-
-            return true;
-        }
-    }
+    public static bool RomanceDisabled => forcedDisabled || SyrIndividualitySettings.disableRomance;
 
     public override string SettingsCategory()
     {
