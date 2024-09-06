@@ -10,6 +10,10 @@ public static class CompAbilityEffect_WordOfLove_ValidateTarget
     public static bool Prefix(ref bool __result, LocalTargetInfo target,
         LocalTargetInfo ___selectedTarget)
     {
+        if (SyrIndividuality.RomanceDisabled)
+        {
+            return true;
+        }
         var pawn = ___selectedTarget.Pawn;
         var pawn2 = target.Pawn;
         var compIndividuality = pawn.TryGetComp<CompIndividuality>();
