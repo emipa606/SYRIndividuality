@@ -12,7 +12,7 @@ public class SyrIndividuality : Mod
     private static bool forcedDisabled;
 
     public static bool RationalRomanceActive;
-
+    public static bool WayBetterRomanceActive;
     public static bool PsychologyActive;
 
     public SyrIndividuality(ModContentPack content)
@@ -20,7 +20,8 @@ public class SyrIndividuality : Mod
     {
         PsychologyActive = ModsConfig.ActiveModsInLoadOrder.Any(m => m.Name.Contains("Psychology"));
         RationalRomanceActive = ModsConfig.ActiveModsInLoadOrder.Any(m => m.Name.Contains("Rational Romance"));
-        forcedDisabled = PsychologyActive || RationalRomanceActive;
+        WayBetterRomanceActive = ModsConfig.IsActive("divineDerivative.Romance");
+        forcedDisabled = PsychologyActive || RationalRomanceActive || WayBetterRomanceActive;
         settings = GetSettings<SyrIndividualitySettings>();
         currentVersion = VersionFromManifest.GetVersionFromModMetaData(content.ModMetaData);
     }
@@ -42,7 +43,7 @@ public class SyrIndividuality : Mod
         listing_Standard.Label("SyrTraitsTraitCount".Translate());
         listing_Standard.IntRange(ref SyrIndividualitySettings.traitCount, 0, 8);
         listing_Standard.Gap(24f);
-        if (PsychologyActive || RationalRomanceActive)
+        if (PsychologyActive || RationalRomanceActive || WayBetterRomanceActive)
         {
             GUI.color = Color.red;
             var text = "";
@@ -50,7 +51,7 @@ public class SyrIndividuality : Mod
             {
                 text = "SyrTraitsDisabledPsychology".Translate();
             }
-            else if (RationalRomanceActive)
+            else if (RationalRomanceActive || WayBetterRomanceActive)
             {
                 text = "SyrTraitsDisabledRationalRomance".Translate();
             }
