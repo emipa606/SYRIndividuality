@@ -535,13 +535,13 @@
       <value>
         <commonality>0</commonality>
       </value>
-	</match>
-	<nomatch Class="PatchOperationAdd">
+    </match>
+    <nomatch Class="PatchOperationAdd">
       <xpath>*/TraitDef[defName = "Straight"]</xpath>
       <value>
         <commonality>0</commonality>
-	  </value>
-	</nomatch>
+      </value>
+    </nomatch>
   </Operation>
   <!--<Operation Class="PatchOperationConditional">
   <success>Always</success>

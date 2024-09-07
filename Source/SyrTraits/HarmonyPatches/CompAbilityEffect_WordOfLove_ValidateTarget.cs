@@ -14,6 +14,7 @@ public static class CompAbilityEffect_WordOfLove_ValidateTarget
         {
             return true;
         }
+
         var pawn = ___selectedTarget.Pawn;
         var pawn2 = target.Pawn;
         var compIndividuality = pawn.TryGetComp<CompIndividuality>();
