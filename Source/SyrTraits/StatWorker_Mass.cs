@@ -8,19 +8,28 @@ public class StatWorker_Mass : StatWorker
 {
     public override float GetValueUnfinalized(StatRequest req, bool applyPostProcess = true)
     {
-        if (req.Thing.TryGetComp<CompIndividuality>() != null)
+        var thing = req.Thing;
+        if (thing.def.IsCorpse)
         {
-            return base.GetValueUnfinalized(req, applyPostProcess) +
-                   req.Thing.TryGetComp<CompIndividuality>().BodyWeight;
+            thing = (thing as Corpse)?.InnerPawn;
         }
 
-        return base.GetValueUnfinalized(req, applyPostProcess);
+        var compIndividuality = thing.TryGetComp<CompIndividuality>();
+        return compIndividuality != null
+            ? base.GetValueUnfinalized(req, applyPostProcess) + compIndividuality.BodyWeight
+            : base.GetValueUnfinalized(req, applyPostProcess);
     }
 
     public override string GetExplanationUnfinalized(StatRequest req, ToStringNumberSense numberSense)
     {
         var stringBuilder = new StringBuilder();
-        var compIndividuality = req.Thing.TryGetComp<CompIndividuality>();
+        var thing = req.Thing;
+        if (thing.def.IsCorpse)
+        {
+            thing = (thing as Corpse)?.InnerPawn;
+        }
+
+        var compIndividuality = thing.TryGetComp<CompIndividuality>();
         if (compIndividuality == null)
         {
             return base.GetExplanationUnfinalized(req, numberSense);

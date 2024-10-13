@@ -1,5 +1,8 @@
 # Changelog for SYRIndividuality
 
+1.5.7 - The individual weight will now also apply to corpses, thanks jagerguy36
+
+
 1.5.6 - Added compatibility with Way Better Romance, thanks divineDerivative!
 
 
