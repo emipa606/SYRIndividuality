@@ -9,6 +9,11 @@ public class StatWorker_Mass : StatWorker
     public override float GetValueUnfinalized(StatRequest req, bool applyPostProcess = true)
     {
         var thing = req.Thing;
+        if (thing == null)
+        {
+            return base.GetValueUnfinalized(req, applyPostProcess);
+        }
+
         if (thing.def.IsCorpse)
         {
             thing = (thing as Corpse)?.InnerPawn;
@@ -24,6 +29,11 @@ public class StatWorker_Mass : StatWorker
     {
         var stringBuilder = new StringBuilder();
         var thing = req.Thing;
+        if (thing == null)
+        {
+            return base.GetExplanationUnfinalized(req, numberSense);
+        }
+
         if (thing.def.IsCorpse)
         {
             thing = (thing as Corpse)?.InnerPawn;
