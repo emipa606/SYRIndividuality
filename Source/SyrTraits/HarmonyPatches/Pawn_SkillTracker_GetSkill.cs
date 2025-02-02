@@ -9,6 +9,11 @@ public static class Pawn_SkillTracker_GetSkill
 {
     public static void Postfix(ref SkillRecord __result, Pawn ___pawn)
     {
+        if (___pawn.story?.traits == null)
+        {
+            return;
+        }
+
         if (!___pawn.story.traits.HasTrait(SyrTraitDefOf.SYR_GreenThumb) || !WorkGiver_GrowerSow_JobOnCell.greenThumb)
         {
             return;
