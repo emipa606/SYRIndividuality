@@ -29,8 +29,6 @@
   <SyrIndividuality_EditModeOff>Bearbeitungsmodus deaktivieren</SyrIndividuality_EditModeOff>
   <SyrIndividuality_EditModeTooltip>Klicken Sie mit der linken Maustaste auf ein Feld, um es zu vergrößern, mit der rechten Maustaste, um es zu verkleinern.</SyrIndividuality_EditModeTooltip>
   <BodyWeightOffset>Natürliche Körperform</BodyWeightOffset>
-  <SyrTraitsDaVinciGene>Da Vinci-Gen</SyrTraitsDaVinciGene>
-  <SyrTraitsSlowLearnerLabel>Langsam Lernende</SyrTraitsSlowLearnerLabel>
   <SyrTraitsSlowLearner>Bonus aus den Gesamtfertigkeiten</SyrTraitsSlowLearner>
   <SyrTraitsCurrentModVersion>Installierte Mod-Version: {0}</SyrTraitsCurrentModVersion>
 </LanguageData>
