@@ -12,7 +12,6 @@ namespace SyrTraits;
 using static StatWorker_GetValueUnfinalized.StatBonuses;
 
 [HarmonyPatch(typeof(StatWorker), nameof(StatWorker.GetExplanationUnfinalized))]
-[HarmonyDebug]
 public static class StatWorker_GetExplanationUnfinalized
 {
     private static readonly FieldInfo _storyField = typeof(Pawn).GetField(nameof(Pawn.story));
