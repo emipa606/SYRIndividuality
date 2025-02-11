@@ -15,6 +15,8 @@ public class SyrIndividuality : Mod
     public static bool WayBetterRomanceActive;
     public static bool PsychologyActive;
 
+    public const string logPrefix = "[Individuality]:";
+
     public SyrIndividuality(ModContentPack content)
         : base(content)
     {
