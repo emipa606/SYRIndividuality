@@ -29,8 +29,6 @@
   <SyrIndividuality_EditModeOff>Désactiver le mode édition</SyrIndividuality_EditModeOff>
   <SyrIndividuality_EditModeTooltip>Cliquez avec le bouton gauche de la souris sur un champ pour l'augmenter, cliquez avec le bouton droit de la souris pour le diminuer.</SyrIndividuality_EditModeTooltip>
   <BodyWeightOffset>Forme naturelle du corps</BodyWeightOffset>
-  <SyrTraitsDaVinciGene>Le gène de Vinci</SyrTraitsDaVinciGene>
-  <SyrTraitsSlowLearnerLabel>Apprentissage lent</SyrTraitsSlowLearnerLabel>
   <SyrTraitsSlowLearner>Bonus de compétences totales</SyrTraitsSlowLearner>
   <SyrTraitsCurrentModVersion>Version installée du mod : {0}</SyrTraitsCurrentModVersion>
 </LanguageData>
