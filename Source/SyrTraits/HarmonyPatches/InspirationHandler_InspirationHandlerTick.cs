@@ -16,7 +16,7 @@ public class InspirationHandler_InspirationHandlerTick
         }
     }
 
-    public static void CheckStartTrait_RandomInspiration(InspirationHandler __instance)
+    private static void CheckStartTrait_RandomInspiration(InspirationHandler __instance)
     {
         if (__instance.Inspired || __instance.pawn?.story == null)
         {

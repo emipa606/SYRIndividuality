@@ -15,7 +15,7 @@ public static class ThoughtWorker_Disfigured_CurrentSocialStateInternal
         }
 
         var num = other.story.traits.DegreeOfTrait(SyrTraitDefOf.Beauty);
-        if (num == -1 || num == -2)
+        if (num is -1 or -2)
         {
             __result = false;
         }

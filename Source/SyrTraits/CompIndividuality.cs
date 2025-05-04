@@ -47,14 +47,14 @@ public class CompIndividuality : ThingComp
 
     public override void ReceiveCompSignal(string signal)
     {
-        if (signal == "bodyTypeSelected" && parent is Pawn pawn)
+        switch (signal)
         {
-            BodyWeight = RandomBodyWeightByBodyType(pawn);
-        }
-
-        if (signal == "traitsGenerated")
-        {
-            ReplaceVanillaTraits();
+            case "bodyTypeSelected" when parent is Pawn pawn:
+                BodyWeight = RandomBodyWeightByBodyType(pawn);
+                break;
+            case "traitsGenerated":
+                ReplaceVanillaTraits();
+                break;
         }
     }
 
@@ -74,29 +74,33 @@ public class CompIndividuality : ThingComp
         Scribe_Values.Look(ref PsychicFactor, "Individuality_PsychicFactor", -2f);
     }
 
-    public void IndividualityValueSetup()
+    private void IndividualityValueSetup()
     {
         var pawn = parent as Pawn;
-        if (parent.def.defName == "ChjDroid")
+        switch (parent.def.defName)
         {
-            if (sexuality == Sexuality.Undefined)
+            case "ChjDroid":
             {
-                sexuality = Sexuality.Asexual;
-            }
+                if (sexuality == Sexuality.Undefined)
+                {
+                    sexuality = Sexuality.Asexual;
+                }
 
-            if (RomanceFactor == -1f)
-            {
-                RomanceFactor = 0f;
-            }
+                if (RomanceFactor == -1f)
+                {
+                    RomanceFactor = 0f;
+                }
 
-            if (PsychicFactor == -2f)
-            {
-                PsychicFactor = RandomPsychicFactor();
+                if (PsychicFactor == -2f)
+                {
+                    PsychicFactor = RandomPsychicFactor();
+                }
+
+                break;
             }
-        }
-        else if (parent.def.defName == "Harpy" && sexuality == Sexuality.Undefined)
-        {
-            sexuality = Sexuality.Bisexual;
+            case "Harpy" when sexuality == Sexuality.Undefined:
+                sexuality = Sexuality.Bisexual;
+                break;
         }
 
         if (sexuality == Sexuality.Undefined)
@@ -120,7 +124,7 @@ public class CompIndividuality : ThingComp
         }
     }
 
-    public float RandomPsychicFactor()
+    private static float RandomPsychicFactor()
     {
         var num = Mathf.Clamp(Rand.Gaussian(0f, 0.5f), -1f, 1f);
         if (num > -0.3f && num < 0.3)
@@ -131,7 +135,7 @@ public class CompIndividuality : ThingComp
         return GenMath.RoundTo(num, 0.2f);
     }
 
-    public int RandomBodyWeightByBodyType(Pawn pawn)
+    private int RandomBodyWeightByBodyType(Pawn pawn)
     {
         if (pawn?.story?.bodyType == null)
         {
@@ -147,24 +151,24 @@ public class CompIndividuality : ThingComp
         return Mathf.Clamp(value, -20, 40);
     }
 
-    public Sexuality RandomSexualityByWeight()
+    private Sexuality RandomSexualityByWeight()
     {
         return SexualityArray.RandomElementByWeight(Probability);
     }
 
-    public float Probability(Sexuality val)
+    private static float Probability(Sexuality val)
     {
         return val switch
         {
-            Sexuality.Straight => SyrIndividualitySettings.commonalityStraight,
-            Sexuality.Bisexual => SyrIndividualitySettings.commonalityBi,
-            Sexuality.Gay => SyrIndividualitySettings.commonalityGay,
-            Sexuality.Asexual => SyrIndividualitySettings.commonalityAsexual,
+            Sexuality.Straight => SyrIndividualitySettings.CommonalityStraight,
+            Sexuality.Bisexual => SyrIndividualitySettings.CommonalityBi,
+            Sexuality.Gay => SyrIndividualitySettings.CommonalityGay,
+            Sexuality.Asexual => SyrIndividualitySettings.CommonalityAsexual,
             _ => 0f
         };
     }
 
-    public void ReplaceVanillaTraits()
+    private void ReplaceVanillaTraits()
     {
         var thingWithComps = parent;
         if (thingWithComps is not Pawn pawn)

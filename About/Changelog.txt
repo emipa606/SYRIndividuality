@@ -1,5 +1,8 @@
 # Changelog for SYRIndividuality
 
+1.5.10 - Updated settings-behaviour, thanks to SamuelBucher
+
+
 1.5.9 - Fixed compatibility with mods that add pawns with skills but no traits, like Dead Man's Switch. Thanks to jagerguy36!
 
 

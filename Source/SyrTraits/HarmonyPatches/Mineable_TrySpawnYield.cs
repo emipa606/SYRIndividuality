@@ -40,7 +40,7 @@ public static class Mineable_TrySpawnYield
         }
     }
 
-    public static float FactorFromHilliness(Hilliness hilliness)
+    private static float FactorFromHilliness(Hilliness hilliness)
     {
         switch (hilliness)
         {

@@ -10,7 +10,7 @@ public static class CompToHumanlikes
         AddCompToHumanlikes();
     }
 
-    public static void AddCompToHumanlikes()
+    private static void AddCompToHumanlikes()
     {
         foreach (var allDef in DefDatabase<ThingDef>.AllDefs)
         {

@@ -7,13 +7,7 @@ namespace SyrTraits;
 
 public static class IndividualityCardUtility
 {
-    public enum ScrollDirection
-    {
-        Up,
-        Down
-    }
-
-    public static bool editMode;
+    private static bool editMode;
 
     public static void DrawIndividualityCard(Rect rect, Pawn pawn)
     {
@@ -195,7 +189,7 @@ public static class IndividualityCardUtility
         }
     }
 
-    public static bool Scrolled(Rect rect, ScrollDirection direction, bool stopPropagation)
+    private static bool Scrolled(Rect rect, ScrollDirection direction, bool stopPropagation)
     {
         var num = Event.current.type == EventType.ScrollWheel &&
                   (Event.current.delta.y > 0f && direction == ScrollDirection.Up ||
@@ -208,17 +202,17 @@ public static class IndividualityCardUtility
         return num;
     }
 
-    public static bool ScrolledUp(Rect rect, bool stopPropagation = false)
+    private static bool ScrolledUp(Rect rect, bool stopPropagation = false)
     {
         return Scrolled(rect, ScrollDirection.Up, stopPropagation);
     }
 
-    public static bool ScrolledDown(Rect rect, bool stopPropagation = false)
+    private static bool ScrolledDown(Rect rect, bool stopPropagation = false)
     {
         return Scrolled(rect, ScrollDirection.Down, stopPropagation);
     }
 
-    public static bool Clicked(Rect rect, int button = 0)
+    private static bool Clicked(Rect rect, int button = 0)
     {
         if (Event.current.type == EventType.MouseDown && Event.current.button == button)
         {
@@ -228,13 +222,19 @@ public static class IndividualityCardUtility
         return false;
     }
 
-    public static bool LeftClicked(Rect rect)
+    private static bool LeftClicked(Rect rect)
     {
         return Clicked(rect);
     }
 
-    public static bool RightClicked(Rect rect)
+    private static bool RightClicked(Rect rect)
     {
         return Clicked(rect, 1);
+    }
+
+    private enum ScrollDirection
+    {
+        Up,
+        Down
     }
 }

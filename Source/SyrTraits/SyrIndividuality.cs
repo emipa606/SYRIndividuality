@@ -9,26 +9,24 @@ namespace SyrTraits;
 
 public class SyrIndividuality : Mod
 {
-    public static SyrIndividualitySettings settings;
     private static string currentVersion;
     private static bool forcedDisabled;
-
-    public static bool RationalRomanceActive;
-    public static bool WayBetterRomanceActive;
-    public static bool PsychologyActive;
+    private static bool rationalRomanceActive;
+    private static bool wayBetterRomanceActive;
+    private static bool psychologyActive;
 
     public SyrIndividuality(ModContentPack content)
         : base(content)
     {
-        PsychologyActive = ModsConfig.ActiveModsInLoadOrder.Any(m => m.Name.Contains("Psychology"));
-        RationalRomanceActive = ModsConfig.ActiveModsInLoadOrder.Any(m => m.Name.Contains("Rational Romance"));
-        WayBetterRomanceActive = ModsConfig.IsActive("divineDerivative.Romance");
-        forcedDisabled = PsychologyActive || RationalRomanceActive || WayBetterRomanceActive;
-        settings = GetSettings<SyrIndividualitySettings>();
+        psychologyActive = ModsConfig.ActiveModsInLoadOrder.Any(m => m.Name.Contains("Psychology"));
+        rationalRomanceActive = ModsConfig.ActiveModsInLoadOrder.Any(m => m.Name.Contains("Rational Romance"));
+        wayBetterRomanceActive = ModsConfig.IsActive("divineDerivative.Romance");
+        forcedDisabled = psychologyActive || rationalRomanceActive || wayBetterRomanceActive;
+        GetSettings<SyrIndividualitySettings>();
         currentVersion = VersionFromManifest.GetVersionFromModMetaData(content.ModMetaData);
     }
 
-    public static bool RomanceDisabled => forcedDisabled || SyrIndividualitySettings.disableRomance;
+    public static bool RomanceDisabled => forcedDisabled || SyrIndividualitySettings.DisableRomance;
 
     public override string SettingsCategory()
     {
@@ -37,200 +35,225 @@ public class SyrIndividuality : Mod
 
     public override void DoSettingsWindowContents(Rect inRect)
     {
-        var listing_Standard = new Listing_Standard();
-        listing_Standard.Begin(inRect);
-        listing_Standard.Label("SyrTraitsTraitCount".Translate());
-        listing_Standard.IntRange(ref SyrIndividualitySettings.traitCount, 0, 8);
-        listing_Standard.Gap(24f);
-        if (PsychologyActive || RationalRomanceActive || WayBetterRomanceActive)
+        var listingStandard = new Listing_Standard();
+        listingStandard.Begin(inRect);
+        listingStandard.Label("SyrTraitsTraitCount".Translate());
+        listingStandard.IntRange(ref SyrIndividualitySettings.TraitCount, 0, 8);
+        listingStandard.Gap(24f);
+        if (psychologyActive || rationalRomanceActive || wayBetterRomanceActive)
         {
             GUI.color = Color.red;
             var text = "";
-            if (PsychologyActive)
+            if (psychologyActive)
             {
                 text = "SyrTraitsDisabledPsychology".Translate();
             }
-            else if (RationalRomanceActive || WayBetterRomanceActive)
+            else if (rationalRomanceActive || wayBetterRomanceActive)
             {
                 text = "SyrTraitsDisabledRationalRomance".Translate();
             }
 
-            listing_Standard.Label("SyrTraitsDisabled".Translate() + ": " + text);
+            listingStandard.Label("SyrTraitsDisabled".Translate() + ": " + text);
             GUI.color = Color.white;
         }
         else
         {
-            listing_Standard.CheckboxLabeled("SyrTraitsDisableRomance".Translate(),
-                ref SyrIndividualitySettings.disableRomance, "SyrTraitsDisableRomanceTooltip".Translate());
+            listingStandard.CheckboxLabeled("SyrTraitsDisableRomance".Translate(),
+                ref SyrIndividualitySettings.DisableRomance, "SyrTraitsDisableRomanceTooltip".Translate());
         }
 
-        //Saving old orientation values
-        float oldCommonalityStraight = SyrIndividualitySettings.commonalityStraight;
-        float oldCommonalityBi = SyrIndividualitySettings.commonalityBi;
-        float oldCommonalityGay = SyrIndividualitySettings.commonalityGay;
-        float oldCommonalityAsexual = SyrIndividualitySettings.commonalityAsexual;
 
-        //Drawing orienration commonality sliders
-        listing_Standard.Gap(24f);
+        //Drawing orientation commonality sliders
+        listingStandard.Gap(24f);
         if (!RomanceDisabled)
         {
-            listing_Standard.Label("SyrTraitsSexualityCommonality".Translate());
+            listingStandard.Label("SyrTraitsSexualityCommonality".Translate());
 
-            listing_Standard.Label("SyrTraitsSexualityCommonalityStraight".Translate() + ": " + SyrIndividualitySettings.commonalityStraight.ToStringByStyle(ToStringStyle.PercentZero));
-            SyrIndividualitySettings.commonalityStraight = GenMath.RoundedHundredth(listing_Standard.Slider(SyrIndividualitySettings.commonalityStraight, 0f, 1f));
-
-            listing_Standard.Label("SyrTraitsSexualityCommonalityBi".Translate() + ": " + SyrIndividualitySettings.commonalityBi.ToStringByStyle(ToStringStyle.PercentZero));
-            SyrIndividualitySettings.commonalityBi = GenMath.RoundedHundredth(listing_Standard.Slider(SyrIndividualitySettings.commonalityBi, 0f, 1f));
-
-            listing_Standard.Label("SyrTraitsSexualityCommonalityGay".Translate() + ": " + SyrIndividualitySettings.commonalityGay.ToStringByStyle(ToStringStyle.PercentZero));
-            SyrIndividualitySettings.commonalityGay = GenMath.RoundedHundredth(listing_Standard.Slider(SyrIndividualitySettings.commonalityGay, 0f, 1f));
-
-            listing_Standard.Label("SyrTraitsSexualityCommonalityAsexual".Translate() + ": " + SyrIndividualitySettings.commonalityAsexual.ToStringByStyle(ToStringStyle.PercentZero));
-            SyrIndividualitySettings.commonalityAsexual = GenMath.RoundedHundredth(listing_Standard.Slider(SyrIndividualitySettings.commonalityAsexual, 0f, 1f));
-
-            //If a commonality valie was changed, inversely change other commonalities
-            if (oldCommonalityBi != SyrIndividualitySettings.commonalityBi)
+            var oldCommonalityStraight = SyrIndividualitySettings.CommonalityStraight;
+            listingStandard.Label("SyrTraitsSexualityCommonalityStraight".Translate() + ": " +
+                                  SyrIndividualitySettings.CommonalityStraight.ToStringByStyle(ToStringStyle
+                                      .PercentZero));
+            SyrIndividualitySettings.CommonalityStraight =
+                GenMath.RoundedHundredth(listingStandard.Slider(SyrIndividualitySettings.CommonalityStraight, 0f, 1f));
+            if (oldCommonalityStraight != SyrIndividualitySettings.CommonalityStraight)
             {
-                ChangeOtherCommonalities(SyrIndividualitySettings.commonalityBi - oldCommonalityBi, Sexuality.Bisexual);
+                ChangeOtherCommonalities(SyrIndividualitySettings.CommonalityStraight - oldCommonalityStraight,
+                    Sexuality.Straight);
             }
-            else if (oldCommonalityGay != SyrIndividualitySettings.commonalityGay)
+
+            var oldCommonalityBi = SyrIndividualitySettings.CommonalityBi;
+            listingStandard.Label("SyrTraitsSexualityCommonalityBi".Translate() + ": " +
+                                  SyrIndividualitySettings.CommonalityBi.ToStringByStyle(ToStringStyle.PercentZero));
+            SyrIndividualitySettings.CommonalityBi =
+                GenMath.RoundedHundredth(listingStandard.Slider(SyrIndividualitySettings.CommonalityBi, 0f, 1f));
+            if (oldCommonalityBi != SyrIndividualitySettings.CommonalityBi)
             {
-                ChangeOtherCommonalities(SyrIndividualitySettings.commonalityGay - oldCommonalityGay, Sexuality.Gay);
+                ChangeOtherCommonalities(SyrIndividualitySettings.CommonalityBi - oldCommonalityBi, Sexuality.Bisexual);
             }
-            else if (oldCommonalityAsexual != SyrIndividualitySettings.commonalityAsexual)
+
+            var oldCommonalityGay = SyrIndividualitySettings.CommonalityGay;
+            listingStandard.Label("SyrTraitsSexualityCommonalityGay".Translate() + ": " +
+                                  SyrIndividualitySettings.CommonalityGay.ToStringByStyle(ToStringStyle.PercentZero));
+            SyrIndividualitySettings.CommonalityGay =
+                GenMath.RoundedHundredth(listingStandard.Slider(SyrIndividualitySettings.CommonalityGay, 0f, 1f));
+            if (oldCommonalityGay != SyrIndividualitySettings.CommonalityGay)
             {
-                ChangeOtherCommonalities(SyrIndividualitySettings.commonalityAsexual - oldCommonalityAsexual, Sexuality.Asexual);
+                ChangeOtherCommonalities(SyrIndividualitySettings.CommonalityGay - oldCommonalityGay, Sexuality.Gay);
             }
-            else if (oldCommonalityStraight != SyrIndividualitySettings.commonalityStraight)
+
+            var oldCommonalityAsexual = SyrIndividualitySettings.CommonalityAsexual;
+            listingStandard.Label("SyrTraitsSexualityCommonalityAsexual".Translate() + ": " +
+                                  SyrIndividualitySettings.CommonalityAsexual.ToStringByStyle(
+                                      ToStringStyle.PercentZero));
+            SyrIndividualitySettings.CommonalityAsexual =
+                GenMath.RoundedHundredth(listingStandard.Slider(SyrIndividualitySettings.CommonalityAsexual, 0f, 1f));
+            if (oldCommonalityAsexual != SyrIndividualitySettings.CommonalityAsexual)
             {
-                ChangeOtherCommonalities(SyrIndividualitySettings.commonalityStraight - oldCommonalityStraight, Sexuality.Straight);
+                ChangeOtherCommonalities(SyrIndividualitySettings.CommonalityAsexual - oldCommonalityAsexual,
+                    Sexuality.Asexual);
             }
 
             //If the total somehow doesn't equal 1
-            if (GenMath.RoundedHundredth(SyrIndividualitySettings.commonalityStraight + SyrIndividualitySettings.commonalityBi + SyrIndividualitySettings.commonalityGay + SyrIndividualitySettings.commonalityAsexual) != 1f)
+            if (GenMath.RoundedHundredth(SyrIndividualitySettings.CommonalityStraight +
+                                         SyrIndividualitySettings.CommonalityBi +
+                                         SyrIndividualitySettings.CommonalityGay +
+                                         SyrIndividualitySettings.CommonalityAsexual) != 1f)
             {
-                Log.Error("Orientation chance total is not equal to 1! Resetting.");
+                Log.Warning("[SYR] Individuality: Orientation chance total is not equal to 1! Resetting.");
                 //Reset
-                SyrIndividualitySettings.commonalityStraight = 0.8f;
-                SyrIndividualitySettings.commonalityBi = 0.1f;
-                SyrIndividualitySettings.commonalityGay = 0.1f;
-                SyrIndividualitySettings.commonalityAsexual = 0f;
+                SyrIndividualitySettings.CommonalityStraight = 0.8f;
+                SyrIndividualitySettings.CommonalityBi = 0.1f;
+                SyrIndividualitySettings.CommonalityGay = 0.1f;
+                SyrIndividualitySettings.CommonalityAsexual = 0f;
             }
 
-            listing_Standard.Gap();
+            listingStandard.Gap();
         }
 
         //Reset settings button
-        if (listing_Standard.ButtonText("SyrTraitsDefaultSettings".Translate(), "SyrTraitsDefaultSettingsTooltip".Translate()))
+        if (listingStandard.ButtonText("SyrTraitsDefaultSettings".Translate(),
+                "SyrTraitsDefaultSettingsTooltip".Translate()))
         {
-            SyrIndividualitySettings.traitCount.min = 2;
-            SyrIndividualitySettings.traitCount.max = 3;
-            SyrIndividualitySettings.commonalityStraight = 0.8f;
-            SyrIndividualitySettings.commonalityBi = 0.1f;
-            SyrIndividualitySettings.commonalityGay = 0.1f;
-            SyrIndividualitySettings.commonalityAsexual = 0f;
+            SyrIndividualitySettings.TraitCount.min = 2;
+            SyrIndividualitySettings.TraitCount.max = 3;
+            SyrIndividualitySettings.CommonalityStraight = 0.8f;
+            SyrIndividualitySettings.CommonalityBi = 0.1f;
+            SyrIndividualitySettings.CommonalityGay = 0.1f;
+            SyrIndividualitySettings.CommonalityAsexual = 0f;
         }
 
         if (currentVersion != null)
         {
-            listing_Standard.Gap();
+            listingStandard.Gap();
             GUI.contentColor = Color.gray;
-            listing_Standard.Label("SyrTraitsCurrentModVersion".Translate(currentVersion));
+            listingStandard.Label("SyrTraitsCurrentModVersion".Translate(currentVersion));
             GUI.contentColor = Color.white;
         }
 
-        listing_Standard.End();
+        listingStandard.End();
     }
 
     //Increase/decrease some other commonality value(s) inversely to the one changed
     //Keep a list of changed commonalities to prevent a loop of increases/decreases
-    private void ChangeOtherCommonalities(float delta, Sexuality sexuality) => ChangeOtherCommonalities(delta, [sexuality]);
-
-    private void ChangeOtherCommonalities(float delta, List<Sexuality> sexualities)
+    private void ChangeOtherCommonalities(float delta, Sexuality sexuality)
     {
-        if (!sexualities.Contains(Sexuality.Straight))
+        ChangeOtherCommonalities(delta, [sexuality]);
+    }
+
+    private static void ChangeOtherCommonalities(float delta, List<Sexuality> sexualities)
+    {
+        while (true)
         {
-            float newCommonality = GenMath.RoundedHundredth(SyrIndividualitySettings.commonalityStraight - delta);
-            //In case of underflow
-            if (newCommonality < 0f)
+            if (!sexualities.Contains(Sexuality.Straight))
             {
-                SyrIndividualitySettings.commonalityStraight = 0f;
-                sexualities.Add(Sexuality.Straight); //Add the changed commonality to the list to ensure that it's not changed again
-                ChangeOtherCommonalities(newCommonality * -1f, sexualities); //Recurse
-                return;
+                var newCommonality = GenMath.RoundedHundredth(SyrIndividualitySettings.CommonalityStraight - delta);
+                switch (newCommonality)
+                {
+                    //In case of underflow
+                    case < 0f:
+                        SyrIndividualitySettings.CommonalityStraight = 0f;
+                        sexualities.Add(Sexuality
+                            .Straight); //Add the changed commonality to the list to ensure that it's not changed again
+                        delta = newCommonality * -1f;
+                        continue;
+                    //In case of overflow
+                    case > 1f:
+                        SyrIndividualitySettings.CommonalityStraight = 1f;
+                        sexualities.Add(Sexuality.Straight);
+                        delta = newCommonality - 1f;
+                        continue;
+                    default:
+                        SyrIndividualitySettings.CommonalityStraight = newCommonality;
+                        return;
+                }
             }
-            //In case of overflow
-            if (newCommonality > 1f)
+
+            if (!sexualities.Contains(Sexuality.Bisexual))
             {
-                SyrIndividualitySettings.commonalityStraight = 1f;
-                sexualities.Add(Sexuality.Straight);
-                ChangeOtherCommonalities(newCommonality - 1f, sexualities);
-                return;
+                var newCommonality = GenMath.RoundedHundredth(SyrIndividualitySettings.CommonalityBi - delta);
+                switch (newCommonality)
+                {
+                    case < 0f:
+                        SyrIndividualitySettings.CommonalityBi = 0f;
+                        sexualities.Add(Sexuality.Bisexual);
+                        delta = newCommonality * -1f;
+                        continue;
+                    case > 1f:
+                        SyrIndividualitySettings.CommonalityBi = 1f;
+                        sexualities.Add(Sexuality.Bisexual);
+                        delta = newCommonality - 1f;
+                        continue;
+                    default:
+                        SyrIndividualitySettings.CommonalityBi = newCommonality;
+                        return;
+                }
             }
-            SyrIndividualitySettings.commonalityStraight = newCommonality;
-            return;
+
+            if (!sexualities.Contains(Sexuality.Gay))
+            {
+                var newCommonality = GenMath.RoundedHundredth(SyrIndividualitySettings.CommonalityGay - delta);
+                switch (newCommonality)
+                {
+                    case < 0f:
+                        SyrIndividualitySettings.CommonalityGay = 0f;
+                        sexualities.Add(Sexuality.Gay);
+                        delta = newCommonality * -1f;
+                        continue;
+                    case > 1f:
+                        SyrIndividualitySettings.CommonalityGay = 1f;
+                        sexualities.Add(Sexuality.Gay);
+                        delta = newCommonality - 1f;
+                        continue;
+                    default:
+                        SyrIndividualitySettings.CommonalityGay = newCommonality;
+                        return;
+                }
+            }
+
+            if (!sexualities.Contains(Sexuality.Asexual))
+            {
+                var newCommonality = GenMath.RoundedHundredth(SyrIndividualitySettings.CommonalityAsexual - delta);
+                switch (newCommonality)
+                {
+                    case < 0f:
+                        SyrIndividualitySettings.CommonalityAsexual = 0f;
+                        sexualities.Add(Sexuality.Asexual);
+                        delta = newCommonality * -1f;
+                        continue;
+                    case > 1f:
+                        SyrIndividualitySettings.CommonalityAsexual = 1f;
+                        sexualities.Add(Sexuality.Asexual);
+                        delta = newCommonality - 1f;
+                        continue;
+                    default:
+                        SyrIndividualitySettings.CommonalityAsexual = newCommonality;
+                        return;
+                }
+            }
+
+            //Based on my testing, this should be unreachable, but I leave this here just in case
+            Log.Error("[SYR] Individuality: Settings error, failed to balance sexual orientation commonality values.");
+            break;
         }
-        if (!sexualities.Contains(Sexuality.Bisexual))
-        {
-            float newCommonality = GenMath.RoundedHundredth(SyrIndividualitySettings.commonalityBi - delta);
-            if (newCommonality < 0f)
-            {
-                SyrIndividualitySettings.commonalityBi = 0f;
-                sexualities.Add(Sexuality.Bisexual);
-                ChangeOtherCommonalities(newCommonality * -1f, sexualities);
-                return;
-            }
-            if (newCommonality > 1f)
-            {
-                SyrIndividualitySettings.commonalityBi = 1f;
-                sexualities.Add(Sexuality.Bisexual);
-                ChangeOtherCommonalities(newCommonality - 1f, sexualities);
-                return;
-            }
-            SyrIndividualitySettings.commonalityBi = newCommonality;
-            return;
-        }
-        if (!sexualities.Contains(Sexuality.Gay))
-        {
-            float newCommonality = GenMath.RoundedHundredth(SyrIndividualitySettings.commonalityGay - delta);
-            if (newCommonality < 0f)
-            {
-                SyrIndividualitySettings.commonalityGay = 0f;
-                sexualities.Add(Sexuality.Gay);
-                ChangeOtherCommonalities(newCommonality * -1f, sexualities);
-                return;
-            }
-            if (newCommonality > 1f)
-            {
-                SyrIndividualitySettings.commonalityGay = 1f;
-                sexualities.Add(Sexuality.Gay);
-                ChangeOtherCommonalities(newCommonality - 1f, sexualities);
-                return;
-            }
-            SyrIndividualitySettings.commonalityGay = newCommonality;
-            return;
-        }
-        if (!sexualities.Contains(Sexuality.Asexual))
-        {
-            float newCommonality = GenMath.RoundedHundredth(SyrIndividualitySettings.commonalityAsexual - delta);
-            if (newCommonality < 0f)
-            {
-                SyrIndividualitySettings.commonalityAsexual = 0f;
-                sexualities.Add(Sexuality.Asexual);
-                ChangeOtherCommonalities(newCommonality * -1f, sexualities);
-                return;
-            }
-            if (newCommonality > 1f)
-            {
-                SyrIndividualitySettings.commonalityAsexual = 1f;
-                sexualities.Add(Sexuality.Asexual);
-                ChangeOtherCommonalities(newCommonality - 1f, sexualities);
-                return;
-            }
-            SyrIndividualitySettings.commonalityAsexual = newCommonality;
-            return;
-        }
-        //Based on my testing, this should be unreachable, but I leave this here just in case
-        Log.Error("[SYR] Individuality settings error: failed to balance sexual orientation commonality values.");
     }
 }

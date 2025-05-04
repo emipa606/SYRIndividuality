@@ -11,8 +11,8 @@ public static class PawnGenerator_GenerateTraits
 {
     public static void Prefix(ref PawnGenerationRequest request)
     {
-        request.MinimumAgeTraits = SyrIndividualitySettings.traitCount.min;
-        request.MaximumAgeTraits = SyrIndividualitySettings.traitCount.max;
+        request.MinimumAgeTraits = SyrIndividualitySettings.TraitCount.min;
+        request.MaximumAgeTraits = SyrIndividualitySettings.TraitCount.max;
     }
 
     public static void Postfix(Pawn pawn)
@@ -27,7 +27,7 @@ public static class PawnGenerator_GenerateTraits
     public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
         var RangeInclusive = AccessTools.Method(typeof(Rand), nameof(Rand.RangeInclusive));
-        var IntRange = AccessTools.Field(typeof(SyrIndividualitySettings), nameof(SyrIndividualitySettings.traitCount));
+        var IntRange = AccessTools.Field(typeof(SyrIndividualitySettings), nameof(SyrIndividualitySettings.TraitCount));
         var min = AccessTools.Field(typeof(IntRange), "min");
         var max = AccessTools.Field(typeof(IntRange), "max");
         foreach (var i in instructions)
@@ -40,12 +40,9 @@ public static class PawnGenerator_GenerateTraits
                 yield return new CodeInstruction(OpCodes.Ldfld, min);
                 yield return new CodeInstruction(OpCodes.Ldsfld, IntRange);
                 yield return new CodeInstruction(OpCodes.Ldfld, max);
-                yield return i;
             }
-            else
-            {
-                yield return i;
-            }
+
+            yield return i;
         }
     }
 }

@@ -8,7 +8,7 @@ namespace SyrTraits;
 [HarmonyPatch(typeof(Pawn_RelationsTracker), nameof(Pawn_RelationsTracker.SecondaryLovinChanceFactor))]
 public static class Pawn_RelationsTracker_SecondaryLovinChanceFactor
 {
-    public static readonly SimpleCurve beautyCurve =
+    private static readonly SimpleCurve beautyCurve =
     [
         new CurvePoint(-10f, 0.01f),
         new CurvePoint(-2f, 0.3f),
@@ -73,21 +73,26 @@ public static class Pawn_RelationsTracker_SecondaryLovinChanceFactor
         var ageBiologicalYearsFloat = ___pawn.ageTracker.AgeBiologicalYearsFloat;
         var ageBiologicalYearsFloat2 = otherPawn.ageTracker.AgeBiologicalYearsFloat;
         var num2 = 1f;
-        if (___pawn.gender == Gender.Male)
+        switch (___pawn.gender)
         {
-            var min = ageBiologicalYearsFloat - 30f;
-            var lower = ageBiologicalYearsFloat - 10f;
-            var upper = ageBiologicalYearsFloat + 5f;
-            var max = ageBiologicalYearsFloat + 15f;
-            num2 = GenMath.FlatHill(0.2f, min, lower, upper, max, 0.2f, ageBiologicalYearsFloat2);
-        }
-        else if (___pawn.gender == Gender.Female)
-        {
-            var min2 = ageBiologicalYearsFloat - 20f;
-            var lower2 = ageBiologicalYearsFloat - 10f;
-            var upper2 = ageBiologicalYearsFloat + 10f;
-            var max2 = ageBiologicalYearsFloat + 30f;
-            num2 = GenMath.FlatHill(0.2f, min2, lower2, upper2, max2, 0.2f, ageBiologicalYearsFloat2);
+            case Gender.Male:
+            {
+                var min = ageBiologicalYearsFloat - 30f;
+                var lower = ageBiologicalYearsFloat - 10f;
+                var upper = ageBiologicalYearsFloat + 5f;
+                var max = ageBiologicalYearsFloat + 15f;
+                num2 = GenMath.FlatHill(0.2f, min, lower, upper, max, 0.2f, ageBiologicalYearsFloat2);
+                break;
+            }
+            case Gender.Female:
+            {
+                var min2 = ageBiologicalYearsFloat - 20f;
+                var lower2 = ageBiologicalYearsFloat - 10f;
+                var upper2 = ageBiologicalYearsFloat + 10f;
+                var max2 = ageBiologicalYearsFloat + 30f;
+                num2 = GenMath.FlatHill(0.2f, min2, lower2, upper2, max2, 0.2f, ageBiologicalYearsFloat2);
+                break;
+            }
         }
 
         var num3 = 1f;

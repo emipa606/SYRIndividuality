@@ -20,10 +20,10 @@ public static class TendUtility_CalculateBaseTendQuality
 
         var num = doctor.GetStatValue(StatDefOf.MedicalTendQuality);
         num *= medicinePotency;
-        var building_Bed = patient?.CurrentBed();
-        if (building_Bed != null)
+        var buildingBed = patient?.CurrentBed();
+        if (buildingBed != null)
         {
-            num += building_Bed.GetStatValue(StatDefOf.MedicalTendQualityOffset);
+            num += buildingBed.GetStatValue(StatDefOf.MedicalTendQualityOffset);
         }
 
         __result = Mathf.Clamp(num, 0f, medicineQualityMax);
