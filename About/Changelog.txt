@@ -1,5 +1,8 @@
 # Changelog for SYRIndividuality
 
+1.5.11 - Simplified code, via SamuelBucher
+
+
 1.5.10 - Updated settings-behaviour, thanks to SamuelBucher
 
 

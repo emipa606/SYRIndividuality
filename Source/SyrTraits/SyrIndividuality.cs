@@ -152,7 +152,7 @@ public class SyrIndividuality : Mod
 
         listingStandard.End();
     }
-    
+
     //Increase/decrease some other commonality value(s) inversely to the one changed
     //Keep a list of changed commonalities to prevent a loop of increases/decreases
     private static void ChangeOtherCommonalities(float delta, Sexuality sexuality)
