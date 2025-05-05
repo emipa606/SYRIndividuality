@@ -152,16 +152,12 @@ public class SyrIndividuality : Mod
 
         listingStandard.End();
     }
-
+    
     //Increase/decrease some other commonality value(s) inversely to the one changed
     //Keep a list of changed commonalities to prevent a loop of increases/decreases
-    private void ChangeOtherCommonalities(float delta, Sexuality sexuality)
+    private static void ChangeOtherCommonalities(float delta, Sexuality sexuality)
     {
-        ChangeOtherCommonalities(delta, [sexuality]);
-    }
-
-    private static void ChangeOtherCommonalities(float delta, List<Sexuality> sexualities)
-    {
+        List<Sexuality> sexualities = [sexuality];
         while (true)
         {
             if (!sexualities.Contains(Sexuality.Straight))
