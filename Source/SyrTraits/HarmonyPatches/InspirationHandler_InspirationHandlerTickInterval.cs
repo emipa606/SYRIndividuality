@@ -5,12 +5,12 @@ using Verse;
 
 namespace SyrTraits;
 
-[HarmonyPatch(typeof(InspirationHandler), nameof(InspirationHandler.InspirationHandlerTick))]
-public class InspirationHandler_InspirationHandlerTick
+[HarmonyPatch(typeof(InspirationHandler), nameof(InspirationHandler.InspirationHandlerTickInterval))]
+public class InspirationHandler_InspirationHandlerTickInterval
 {
-    public static void Postfix(InspirationHandler __instance)
+    public static void Postfix(InspirationHandler __instance, int delta)
     {
-        if (__instance.pawn.IsHashIntervalTick(100))
+        if (__instance.pawn.IsHashIntervalTick(100, delta))
         {
             CheckStartTrait_RandomInspiration(__instance);
         }
@@ -35,7 +35,7 @@ public class InspirationHandler_InspirationHandlerTick
                 continue;
             }
 
-            var randomAvailableInspirationDef = GetRandomAvailableInspirationDef(__instance);
+            var randomAvailableInspirationDef = getRandomAvailableInspirationDef(__instance);
             if (randomAvailableInspirationDef != null)
             {
                 __instance.TryStartInspiration(randomAvailableInspirationDef);
@@ -43,7 +43,7 @@ public class InspirationHandler_InspirationHandlerTick
         }
     }
 
-    private static InspirationDef GetRandomAvailableInspirationDef(InspirationHandler __instance)
+    private static InspirationDef getRandomAvailableInspirationDef(InspirationHandler __instance)
     {
         return DefDatabase<InspirationDef>.AllDefsListForReading
             .Where(x => x.Worker.InspirationCanOccur(__instance.pawn) && x != SyrTraitDefOf.Inspired_Surgery &&

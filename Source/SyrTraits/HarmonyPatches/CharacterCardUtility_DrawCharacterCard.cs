@@ -21,11 +21,11 @@ public static class CharacterCardUtility_DrawCharacterCard
             ins.IsStloc() && ins.operand is LocalBuilder { LocalIndex: 20 });
         list.InsertRange(num + 1, new List<CodeInstruction>
         {
-            new CodeInstruction(OpCodes.Ldloca, 20),
-            new CodeInstruction(OpCodes.Ldarg_0),
-            new CodeInstruction(OpCodes.Ldarg_1),
-            new CodeInstruction(OpCodes.Ldarg_3),
-            new CodeInstruction(OpCodes.Call, operand)
+            new(OpCodes.Ldloca, 20),
+            new(OpCodes.Ldarg_0),
+            new(OpCodes.Ldarg_1),
+            new(OpCodes.Ldarg_3),
+            new(OpCodes.Call, operand)
         });
         return list;
     }

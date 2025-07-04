@@ -17,7 +17,7 @@ public static class HarmonyPatches
         var harmony = new Harmony("Syrchalis.Rimworld.Traits");
         harmony.Patch(
             typeof(RimWorld.JobDriver_ConstructFinishFrame)
-                .GetNestedType("<>c__DisplayClass6_0", BindingFlags.Instance | BindingFlags.NonPublic)
+                .GetNestedType("<>c__DisplayClass8_0", BindingFlags.Instance | BindingFlags.NonPublic)
                 .GetMethod("<MakeNewToils>b__1", BindingFlags.Instance | BindingFlags.NonPublic), null, null,
             new HarmonyMethod(
                 typeof(JobDriver_ConstructFinishFrame).GetMethod(nameof(JobDriver_ConstructFinishFrame

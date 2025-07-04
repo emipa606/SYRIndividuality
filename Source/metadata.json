@@ -2,11 +2,16 @@
   "Continued": true,
   "CanAdd": "0",
   "CanRemove": "1",
-  "PreviewVersion": "1.5",
+  "PreviewVersion": "1.6",
   "SocialImageSet": true,
   "SearchTags": [
     "trait rework",
     "character customization"
   ],
-  "LastXmlCleaning": "2025-05-05T16:20:39.2729059+02:00"
+  "LastXmlCleaning": "2025-07-04T22:58:38.637018+02:00",
+  "Patches": true,
+  "Defs": true,
+  "Assemblies": true,
+  "LinesOfCode": 80749.0,
+  "LinesOfXML": 46533.0
 }

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: stealthy -->
+  <SYR_Agile.degreeDatas.stealthy.label>stealthy</SYR_Agile.degreeDatas.stealthy.label>
+  <!-- EN: {PAWN_nameDef} is uncommonly agile and stealthy, with better reflexes and a more flexible body than most. -->
+  <SYR_Agile.degreeDatas.stealthy.description>{PAWN_nameDef} is uncommonly agile and stealthy, with better reflexes and a more flexible body than most.</SYR_Agile.degreeDatas.stealthy.description>
+  <!-- EN: animal friend -->
+  <SYR_AnimalAffinity.degreeDatas.animal_friend.label>animal friend</SYR_AnimalAffinity.degreeDatas.animal_friend.label>
+  <!-- EN: {PAWN_nameDef} has a special connection to animals and understands them better than most people. Animals also tend to understand what {PAWN_pronoun} wants from them. The time {PAWN_pronoun} spends with animals is long, but worth it.\n\n    Taming never causes manhunter\n    Easier taming of very wild animals -->
+  <SYR_AnimalAffinity.degreeDatas.animal_friend.description>{PAWN_nameDef} has a special connection to animals and understands them better than most people. Animals also tend to understand what {PAWN_pronoun} wants from them. The time {PAWN_pronoun} spends with animals is long, but worth it.
+
+    Taming never causes manhunter
+    Easier taming of very wild animals</SYR_AnimalAffinity.degreeDatas.animal_friend.description>
+  <!-- EN: architect -->
+  <SYR_Architect.degreeDatas.architect.label>architect</SYR_Architect.degreeDatas.architect.label>
+  <!-- EN: {PAWN_nameDef} is proficient with various construction materials, particularly stone. {PAWN_pronoun} will construct anything out of stone three times as fast as others and smooth out your rocky base in no time.\n\n    Stone construction speed +200% -->
+  <SYR_Architect.degreeDatas.architect.description>{PAWN_nameDef} is proficient with various construction materials, particularly stone. {PAWN_pronoun} will construct anything out of stone three times as fast as others and smooth out your rocky base in no time.
+
+    Stone construction speed +200%</SYR_Architect.degreeDatas.architect.description>
+  <!-- EN: creative thinker -->
+  <SYR_CreativeThinker.degreeDatas.creative_thinker.label>creative thinker</SYR_CreativeThinker.degreeDatas.creative_thinker.label>
+  <!-- EN: {PAWN_nameDef} has a unique approach to science. {PAWN_pronoun} always thinks outside the box and finds inspiration for intellectual problems in art.\n\n    Artistic increases research speed -->
+  <SYR_CreativeThinker.degreeDatas.creative_thinker.description>{PAWN_nameDef} has a unique approach to science. {PAWN_pronoun} always thinks outside the box and finds inspiration for intellectual problems in art.
+
+    Artistic increases research speed</SYR_CreativeThinker.degreeDatas.creative_thinker.description>
+  <!-- EN: fortunate -->
+  <SYR_GoodFortune.degreeDatas.fortunate.label>fortunate</SYR_GoodFortune.degreeDatas.fortunate.label>
+  <!-- EN: {PAWN_nameDef} seems to have rented all the good fortune on this Rimworld. -->
+  <SYR_GoodFortune.degreeDatas.fortunate.description>{PAWN_nameDef} seems to have rented all the good fortune on this Rimworld.</SYR_GoodFortune.degreeDatas.fortunate.description>
+  <!-- EN: green thumb -->
+  <SYR_GreenThumb.degreeDatas.green_thumb.label>green thumb</SYR_GreenThumb.degreeDatas.green_thumb.label>
+  <!-- EN: {PAWN_nameDef} has a special talent to grow plants and nurture them even in hostile enviroments. {PAWN_pronoun} can grow any plant, even if other people would fail due to their lack of skills. {PAWN_pronoun} would like some plants in {PAWN_possessive} bedroom.\n\n    Can grow any plant regardless of skill -->
+  <SYR_GreenThumb.degreeDatas.green_thumb.description>{PAWN_nameDef} has a special talent to grow plants and nurture them even in hostile enviroments. {PAWN_pronoun} can grow any plant, even if other people would fail due to their lack of skills. {PAWN_pronoun} would like some plants in {PAWN_possessive} bedroom.
+
+    Can grow any plant regardless of skill</SYR_GreenThumb.degreeDatas.green_thumb.description>
+  <!-- EN: gun nut -->
+  <SYR_GunNut.degreeDatas.gun_nut.label>gun nut</SYR_GunNut.degreeDatas.gun_nut.label>
+  <!-- EN: {PAWN_nameDef} is a gun nut, {PAWN_possessive} life revolves around guns, how they are crafted, maintained and used. Quite a handy skill in these circumstances. Just don't hand {PAWN_objective} a melee weapon. -->
+  <SYR_GunNut.degreeDatas.gun_nut.description>{PAWN_nameDef} is a gun nut, {PAWN_possessive} life revolves around guns, how they are crafted, maintained and used. Quite a handy skill in these circumstances. Just don't hand {PAWN_objective} a melee weapon.</SYR_GunNut.degreeDatas.gun_nut.description>
+  <!-- EN: silver tongue -->
+  <SYR_Haggler.degreeDatas.silver_tongue.label>silver tongue</SYR_Haggler.degreeDatas.silver_tongue.label>
+  <!-- EN: {PAWN_nameDef} knows exactly the right words for every situation. This also means {PAWN_possessive} insults hurt more. -->
+  <SYR_Haggler.degreeDatas.silver_tongue.description>{PAWN_nameDef} knows exactly the right words for every situation. This also means {PAWN_possessive} insults hurt more.</SYR_Haggler.degreeDatas.silver_tongue.description>
+  <!-- EN: hand-eye coordination -->
+  <SYR_HandEyeCoordination.degreeDatas.handeye_coordination.label>hand-eye coordination</SYR_HandEyeCoordination.degreeDatas.handeye_coordination.label>
+  <!-- EN: {PAWN_nameDef} is exceptionally coordinated with his hands. -->
+  <SYR_HandEyeCoordination.degreeDatas.handeye_coordination.description>{PAWN_nameDef} is exceptionally coordinated with his hands.</SYR_HandEyeCoordination.degreeDatas.handeye_coordination.description>
+  <!-- EN: keen eye -->
+  <SYR_KeenEye.degreeDatas.keen_eye.label>keen eye</SYR_KeenEye.degreeDatas.keen_eye.label>
+  <!-- EN: {PAWN_nameDef} has a keen eye and can spot even tiny mineral deposits. {PAWN_pronoun} will occassionally find small clumps of resources when mining any sort of stone or ore. Chance increased for flatter terrain. -->
+  <SYR_KeenEye.degreeDatas.keen_eye.description>{PAWN_nameDef} has a keen eye and can spot even tiny mineral deposits. {PAWN_pronoun} will occassionally find small clumps of resources when mining any sort of stone or ore. Chance increased for flatter terrain.</SYR_KeenEye.degreeDatas.keen_eye.description>
+  <!-- EN: mechanoid expert -->
+  <SYR_MechanoidExpert.degreeDatas.mechanoid_expert.label>mechanoid expert</SYR_MechanoidExpert.degreeDatas.mechanoid_expert.label>
+  <!-- EN: {PAWN_nameDef} has had their fair share of encounters with mechanoids. {PAWN_pronoun} has become an expert in mechanoid construction and combat, making {PAWN_objective} uniquely suited to disassemble and fight them.\n\n    Damage versus mechanoids +50% -->
+  <SYR_MechanoidExpert.degreeDatas.mechanoid_expert.description>{PAWN_nameDef} has had their fair share of encounters with mechanoids. {PAWN_pronoun} has become an expert in mechanoid construction and combat, making {PAWN_objective} uniquely suited to disassemble and fight them.
+
+    Damage versus mechanoids +50%</SYR_MechanoidExpert.degreeDatas.mechanoid_expert.description>
+  <!-- EN: perfectionist -->
+  <SYR_Perfectionist.degreeDatas.perfectionist.label>perfectionist</SYR_Perfectionist.degreeDatas.perfectionist.label>
+  <!-- EN: {PAWN_nameDef} wants thing to be exactly right. This does take time, but the results speak for themselves.\n\n    Quality level +1 (50% chance) -->
+  <SYR_Perfectionist.degreeDatas.perfectionist.description>{PAWN_nameDef} wants thing to be exactly right. This does take time, but the results speak for themselves.
+
+    Quality level +1 (50% chance)</SYR_Perfectionist.degreeDatas.perfectionist.description>
+  <!-- EN: steady hands -->
+  <SYR_SteadyHands.degreeDatas.steady_hands.label>steady hands</SYR_SteadyHands.degreeDatas.steady_hands.label>
+  <!-- EN: {PAWN_nameDef} has particularly steady hands, which don't even tremble in dire circumstances or when {PAWN_pronoun} {PAWN_objective}self is injured.\n\n    No self-tend penalty -->
+  <SYR_SteadyHands.degreeDatas.steady_hands.description>{PAWN_nameDef} has particularly steady hands, which don't even tremble in dire circumstances or when {PAWN_pronoun} {PAWN_objective}self is injured.
+
+    No self-tend penalty</SYR_SteadyHands.degreeDatas.steady_hands.description>
+  <!-- EN: strong back -->
+  <SYR_StrongBack.degreeDatas.strong_back.label>strong back</SYR_StrongBack.degreeDatas.strong_back.label>
+  <!-- EN: {PAWN_nameDef} has a very strong back or is part mule or something. {PAWN_pronoun} can carry significantly more as a normal person. -->
+  <SYR_StrongBack.degreeDatas.strong_back.description>{PAWN_nameDef} has a very strong back or is part mule or something. {PAWN_pronoun} can carry significantly more as a normal person.</SYR_StrongBack.degreeDatas.strong_back.description>
+</LanguageData>

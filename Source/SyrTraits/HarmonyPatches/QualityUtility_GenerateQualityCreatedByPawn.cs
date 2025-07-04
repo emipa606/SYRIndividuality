@@ -5,7 +5,7 @@ using Verse;
 namespace SyrTraits;
 
 [HarmonyPatch(typeof(QualityUtility), nameof(QualityUtility.GenerateQualityCreatedByPawn), typeof(Pawn),
-    typeof(SkillDef))]
+    typeof(SkillDef), typeof(bool))]
 [HarmonyPriority(0)]
 public class QualityUtility_GenerateQualityCreatedByPawn
 {

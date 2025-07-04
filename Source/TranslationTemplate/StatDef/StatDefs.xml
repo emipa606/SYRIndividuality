@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: joy need rate multiplier -->
+  <JoyNeedRateMultiplier.label>joy need rate multiplier</JoyNeedRateMultiplier.label>
+  <!-- EN: A multiplier on how quickly a person needs recreation. -->
+  <JoyNeedRateMultiplier.description>A multiplier on how quickly a person needs recreation.</JoyNeedRateMultiplier.description>
+</LanguageData>

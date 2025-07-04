@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: Feeling manic -->
+  <FeelingRandom.stages.Feeling_manic.label>Feeling manic</FeelingRandom.stages.Feeling_manic.label>
+  <!-- EN: For no apparent reason, I just feel absolutely fantastic right now! -->
+  <FeelingRandom.stages.Feeling_manic.description>For no apparent reason, I just feel absolutely fantastic right now!</FeelingRandom.stages.Feeling_manic.description>
+  <!-- EN: Feeling great -->
+  <FeelingRandom.stages.Feeling_great.label>Feeling great</FeelingRandom.stages.Feeling_great.label>
+  <!-- EN: For no apparent reason, I just feel great right now. -->
+  <FeelingRandom.stages.Feeling_great.description>For no apparent reason, I just feel great right now.</FeelingRandom.stages.Feeling_great.description>
+  <!-- EN: Feeling good -->
+  <FeelingRandom.stages.Feeling_good.label>Feeling good</FeelingRandom.stages.Feeling_good.label>
+  <!-- EN: For no apparent reason, I just feel good right now. -->
+  <FeelingRandom.stages.Feeling_good.description>For no apparent reason, I just feel good right now.</FeelingRandom.stages.Feeling_good.description>
+  <!-- EN: Feeling bad -->
+  <FeelingRandom.stages.Feeling_bad.label>Feeling bad</FeelingRandom.stages.Feeling_bad.label>
+  <!-- EN: For no apparent reason, I just feel bad right now. -->
+  <FeelingRandom.stages.Feeling_bad.description>For no apparent reason, I just feel bad right now.</FeelingRandom.stages.Feeling_bad.description>
+  <!-- EN: Feeling terrible -->
+  <FeelingRandom.stages.Feeling_terrible.label>Feeling terrible</FeelingRandom.stages.Feeling_terrible.label>
+  <!-- EN: For no apparent reason, I just feel terrible right now. -->
+  <FeelingRandom.stages.Feeling_terrible.description>For no apparent reason, I just feel terrible right now.</FeelingRandom.stages.Feeling_terrible.description>
+  <!-- EN: Feeling depressive -->
+  <FeelingRandom.stages.Feeling_depressive.label>Feeling depressive</FeelingRandom.stages.Feeling_depressive.label>
+  <!-- EN: For no apparent reason, I just feel utterly miserable right now... -->
+  <FeelingRandom.stages.Feeling_depressive.description>For no apparent reason, I just feel utterly miserable right now...</FeelingRandom.stages.Feeling_depressive.description>
+  <!-- EN: body purist happy -->
+  <ProsthophobeHappy.stages.body_purist_happy.label>body purist happy</ProsthophobeHappy.stages.body_purist_happy.label>
+  <!-- EN: Pure and unsullied, my body is whole, without any artifical parts. -->
+  <ProsthophobeHappy.stages.body_purist_happy.description>Pure and unsullied, my body is whole, without any artifical parts.</ProsthophobeHappy.stages.body_purist_happy.description>
+  <!-- EN: gun nut has melee weapon -->
+  <SYR_GunNutUnhappy.stages.gun_nut_has_melee_weapon.label>gun nut has melee weapon</SYR_GunNutUnhappy.stages.gun_nut_has_melee_weapon.label>
+  <!-- EN: What is this? I don't want to use a caveman tool, I want a gun, or a bow at least! -->
+  <SYR_GunNutUnhappy.stages.gun_nut_has_melee_weapon.description>What is this? I don't want to use a caveman tool, I want a gun, or a bow at least!</SYR_GunNutUnhappy.stages.gun_nut_has_melee_weapon.description>
+  <!-- EN: green thumb frustrated -->
+  <Thought_SYR_GreenThumb.stages.green_thumb_frustrated.label>green thumb frustrated</Thought_SYR_GreenThumb.stages.green_thumb_frustrated.label>
+  <!-- EN: Why are there no plants in my room? -->
+  <Thought_SYR_GreenThumb.stages.green_thumb_frustrated.description>Why are there no plants in my room?</Thought_SYR_GreenThumb.stages.green_thumb_frustrated.description>
+  <!-- EN: green thumb unhappy -->
+  <Thought_SYR_GreenThumb.stages.green_thumb_unhappy.label>green thumb unhappy</Thought_SYR_GreenThumb.stages.green_thumb_unhappy.label>
+  <!-- EN: Can I have some more plants in my room? One or two just won't do. -->
+  <Thought_SYR_GreenThumb.stages.green_thumb_unhappy.description>Can I have some more plants in my room? One or two just won't do.</Thought_SYR_GreenThumb.stages.green_thumb_unhappy.description>
+  <!-- EN: green thumb satisfied -->
+  <Thought_SYR_GreenThumb.stages.green_thumb_satisfied.label>green thumb satisfied</Thought_SYR_GreenThumb.stages.green_thumb_satisfied.label>
+  <!-- EN: Those are some nice plants in my bedroom, though I would love if it were more. -->
+  <Thought_SYR_GreenThumb.stages.green_thumb_satisfied.description>Those are some nice plants in my bedroom, though I would love if it were more.</Thought_SYR_GreenThumb.stages.green_thumb_satisfied.description>
+  <!-- EN: green thumb happy -->
+  <Thought_SYR_GreenThumb.stages.green_thumb_happy.label>green thumb happy</Thought_SYR_GreenThumb.stages.green_thumb_happy.label>
+  <!-- EN: Those are nice plants in my bedroom, though I would love if it were some more. -->
+  <Thought_SYR_GreenThumb.stages.green_thumb_happy.description>Those are nice plants in my bedroom, though I would love if it were some more.</Thought_SYR_GreenThumb.stages.green_thumb_happy.description>
+  <!-- EN: green thumb pleased -->
+  <Thought_SYR_GreenThumb.stages.green_thumb_pleased.label>green thumb pleased</Thought_SYR_GreenThumb.stages.green_thumb_pleased.label>
+  <!-- EN: Those are quite a few nice plants in my bedroom, though it could be a little more. -->
+  <Thought_SYR_GreenThumb.stages.green_thumb_pleased.description>Those are quite a few nice plants in my bedroom, though it could be a little more.</Thought_SYR_GreenThumb.stages.green_thumb_pleased.description>
+  <!-- EN: green thumb delighted -->
+  <Thought_SYR_GreenThumb.stages.green_thumb_delighted.label>green thumb delighted</Thought_SYR_GreenThumb.stages.green_thumb_delighted.label>
+  <!-- EN: So many wonderful plants in my room. -->
+  <Thought_SYR_GreenThumb.stages.green_thumb_delighted.description>So many wonderful plants in my room.</Thought_SYR_GreenThumb.stages.green_thumb_delighted.description>
+</LanguageData>
