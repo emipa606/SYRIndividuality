@@ -28,8 +28,6 @@
   <SyrIndividuality_EditModeOff>Disable edit mode</SyrIndividuality_EditModeOff>
   <SyrIndividuality_EditModeTooltip>Left-click a field to increase, right-click to decrease</SyrIndividuality_EditModeTooltip>
   <BodyWeightOffset>Natural body shape</BodyWeightOffset>
-  <SyrTraitsDaVinciGene>Da Vinci Gene</SyrTraitsDaVinciGene>
-  <SyrTraitsSlowLearnerLabel>Slow learner</SyrTraitsSlowLearnerLabel>
-  <SyrTraitsSlowLearner>Bonus from total skills</SyrTraitsSlowLearner>
+  <SyrTraitsSlowLearner>Total skills</SyrTraitsSlowLearner>
   <SyrTraitsCurrentModVersion>Installed mod-version: {0}</SyrTraitsCurrentModVersion>
 </LanguageData>

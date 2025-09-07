@@ -396,7 +396,7 @@
   <Operation Class="PatchOperationReplace">
     <xpath>*/TraitDef[defName = "SlowLearner"]/degreeDatas/li/statOffsets/GlobalLearningFactor</xpath>
     <value>
-      <GlobalLearningFactor>-1.3</GlobalLearningFactor>
+      <GlobalLearningFactor>-0.5</GlobalLearningFactor>
     </value>
   </Operation>
   <Operation Class="PatchOperationReplace">

@@ -29,8 +29,6 @@
   <SyrIndividuality_EditModeOff>禁用编辑模式</SyrIndividuality_EditModeOff>
   <SyrIndividuality_EditModeTooltip>左键单击字段可增加，右键单击可减少</SyrIndividuality_EditModeTooltip>
   <BodyWeightOffset>自然的体形</BodyWeightOffset>
-  <SyrTraitsDaVinciGene>达芬奇基因</SyrTraitsDaVinciGene>
-  <SyrTraitsSlowLearnerLabel>学习速度慢</SyrTraitsSlowLearnerLabel>
   <SyrTraitsSlowLearner>总技能奖励</SyrTraitsSlowLearner>
   <SyrTraitsCurrentModVersion>已安装模块版本：{0}</SyrTraitsCurrentModVersion>
 </LanguageData>
