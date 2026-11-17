@@ -23,10 +23,18 @@ public static class RelationsUtility_AttractedToGender
         switch (compIndividuality.sexuality)
         {
             case CompIndividuality.Sexuality.Straight:
-                __result = pawn.gender != gender;
+                if (pawn != null)
+                {
+                    __result = pawn.gender != gender;
+                }
+
                 break;
             case CompIndividuality.Sexuality.Gay:
-                __result = pawn.gender == gender;
+                if (pawn != null)
+                {
+                    __result = pawn.gender == gender;
+                }
+
                 break;
             case CompIndividuality.Sexuality.Bisexual:
                 __result = true;

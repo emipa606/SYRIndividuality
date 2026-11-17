@@ -229,7 +229,7 @@ public class CompIndividuality : ThingComp
         if (pawn.story.traits.HasTrait(newTraitDef) ||
             pawn.Faction != null && Faction.OfPlayerSilentFail != null && pawn.Faction.HostileTo(Faction.OfPlayer) &&
             !newTraitDef.allowOnHostileSpawn ||
-            pawn.story.traits.allTraits.Any(tr => newTraitDef.ConflictsWith(tr)) ||
+            pawn.story.traits.allTraits.Any(newTraitDef.ConflictsWith) ||
             newTraitDef.requiredWorkTypes != null && pawn.OneOfWorkTypesIsDisabled(newTraitDef.requiredWorkTypes) ||
             pawn.WorkTagIsDisabled(newTraitDef.requiredWorkTags))
         {

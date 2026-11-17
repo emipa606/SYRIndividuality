@@ -1,4 +1,3 @@
-using System.Linq;
 using System.Text;
 using HarmonyLib;
 using RimWorld;
@@ -28,8 +27,8 @@ public static class Trait_TipString
                 num += skill.levelInt;
             }
 
-            var f = (SyrTraitDefOf.SlowLearner.degreeDatas.First().statOffsets
-                         .Find(x => x?.stat != null && x.stat == StatDefOf.GlobalLearningFactor).value +
+            var f = (SyrTraitDefOf.SlowLearner.degreeDatas[0].statOffsets
+                         .Find(x => x?.stat != null && x.stat == StatDefOf.GlobalLearningFactor)!.value +
                      (0.02f * Mathf.Clamp(num, 40f, 140f))) * 100f;
             string value = "    " + StatDefOf.GlobalLearningFactor.LabelCap + " " + f.ToStringWithSign() + "%";
             stringBuilder.AppendLine();

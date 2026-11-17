@@ -12,7 +12,7 @@ public class SyrIndividualitySettings : ModSettings
 
     public static float CommonalityAsexual;
 
-    public static IntRange TraitCount = new IntRange(2, 3);
+    public static IntRange TraitCount = new(2, 3);
 
     public static bool DisableRomance;
 

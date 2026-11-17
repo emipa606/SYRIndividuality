@@ -96,7 +96,7 @@ public static class IndividualityCardUtility
         var rect7 = new Rect(0f, num, rect.width - 10f, 24f);
         Widgets.Label(new Rect(10f, num, rect.width, 24f),
             "BodyWeight".Translate() + ": " + (compIndividuality.BodyWeight +
-                                               (pawn.def.statBases.Find(s => s.stat == StatDefOf.Mass).value *
+                                               (pawn.def.statBases.Find(s => s.stat == StatDefOf.Mass)!.value *
                                                 pawn.BodySize) + " kg (" + pawn.story.bodyType + ")"));
         TipSignal tip4 = "BodyWeightTooltip".Translate();
         TooltipHandler.TipRegion(rect7, tip4);

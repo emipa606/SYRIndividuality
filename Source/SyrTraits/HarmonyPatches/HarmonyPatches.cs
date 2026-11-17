@@ -18,7 +18,7 @@ public static class HarmonyPatches
         harmony.Patch(
             typeof(RimWorld.JobDriver_ConstructFinishFrame)
                 .GetNestedType("<>c__DisplayClass8_0", BindingFlags.Instance | BindingFlags.NonPublic)
-                .GetMethod("<MakeNewToils>b__1", BindingFlags.Instance | BindingFlags.NonPublic), null, null,
+                ?.GetMethod("<MakeNewToils>b__1", BindingFlags.Instance | BindingFlags.NonPublic), null, null,
             new HarmonyMethod(
                 typeof(JobDriver_ConstructFinishFrame).GetMethod(nameof(JobDriver_ConstructFinishFrame
                     .Transpiler))));

@@ -67,16 +67,8 @@ public static class LovePartnerRelationUtility_LovePartnerRelationGenerationChan
 
         if (ex)
         {
-            var num3 = 0;
             var directRelations = other.relations.DirectRelations;
-            foreach (var pawnRelation in directRelations)
-            {
-                if (LovePartnerRelationUtility.IsExLovePartnerRelation(pawnRelation.def))
-                {
-                    num3++;
-                }
-            }
-
+            var num3 = directRelations.Count(x => LovePartnerRelationUtility.IsExLovePartnerRelation(x.def));
             num = Mathf.Pow(0.2f, num3);
         }
         else if (LovePartnerRelationUtility.HasAnyLovePartner(other))
@@ -87,7 +79,7 @@ public static class LovePartnerRelationUtility_LovePartnerRelationGenerationChan
         var num4 = Mathf.Clamp(GenMath.LerpDouble(14f, 27f, 0f, 1f, generated.ageTracker.AgeBiologicalYearsFloat), 0f,
             1f);
         var num5 = Mathf.Clamp(GenMath.LerpDouble(14f, 27f, 0f, 1f, other.ageTracker.AgeBiologicalYearsFloat), 0f, 1f);
-        var num6 = (float)GetGenerationChanceAgeGapFactor.Invoke(null, [generated, other, ex]);
+        var num6 = (float)(GetGenerationChanceAgeGapFactor.Invoke(null, [generated, other, ex]) ?? 1f);
         var num7 = 1f;
         if (generated.GetRelations(other).Any(x => x.familyByBloodRelation))
         {

@@ -6,7 +6,7 @@ namespace SyrTraits;
 
 public class Dialog_ViewIndividuality(Pawn editFor) : Window
 {
-    public override Vector2 InitialSize => new Vector2(350f, 300f);
+    public override Vector2 InitialSize => new(350f, 300f);
 
     public override void DoWindowContents(Rect inRect)
     {

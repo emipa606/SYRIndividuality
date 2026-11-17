@@ -27,7 +27,7 @@ public static class StatWorker_GetExplanationUnfinalized
             num = 1f;
             if (pawn.def.statBases.Find(x => x?.stat != null && x.stat == ___stat) != null)
             {
-                num = pawn.def.statBases.Find(x => x?.stat != null && x.stat == ___stat).value;
+                num = pawn.def.statBases.Find(x => x?.stat != null && x.stat == ___stat)!.value;
             }
 
             val = 0.115f * pawn.skills.GetSkill(SkillDefOf.Artistic).Level * num;

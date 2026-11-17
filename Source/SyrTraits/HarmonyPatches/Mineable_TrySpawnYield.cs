@@ -28,6 +28,11 @@ public static class Mineable_TrySpawnYield
                 ? d.building.mineableScatterCommonality * 0.2f * d.building.mineableYield
                 : d.building.mineableScatterCommonality;
         });
+        if (thingDef == null)
+        {
+            return;
+        }
+
         var stackCount = Mathf.Max(1,
             Mathf.RoundToInt(thingDef.building.mineableYield * Find.Storyteller.difficulty.mineYieldFactor * 0.2f *
                              pawn.GetStatValue(StatDefOf.MiningYield)));

@@ -6,7 +6,7 @@ using Verse;
 namespace SyrTraits;
 
 [HarmonyPatch(typeof(InspirationHandler), nameof(InspirationHandler.InspirationHandlerTickInterval))]
-public class InspirationHandler_InspirationHandlerTickInterval
+public static class InspirationHandler_InspirationHandlerTickInterval
 {
     public static void Postfix(InspirationHandler __instance, int delta)
     {
@@ -48,6 +48,6 @@ public class InspirationHandler_InspirationHandlerTickInterval
         return DefDatabase<InspirationDef>.AllDefsListForReading
             .Where(x => x.Worker.InspirationCanOccur(__instance.pawn) && x != SyrTraitDefOf.Inspired_Surgery &&
                         x != SyrTraitDefOf.Frenzy_Shoot)
-            .RandomElementByWeightWithFallback(x => x.Worker.CommonalityFor(__instance.pawn));
+            .RandomElementByWeightWithFallback(x => x != null ? x.Worker.CommonalityFor(__instance.pawn) : 0f);
     }
 }

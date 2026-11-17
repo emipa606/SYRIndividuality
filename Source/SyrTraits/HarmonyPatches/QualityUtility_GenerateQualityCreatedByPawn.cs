@@ -7,7 +7,7 @@ namespace SyrTraits;
 [HarmonyPatch(typeof(QualityUtility), nameof(QualityUtility.GenerateQualityCreatedByPawn), typeof(Pawn),
     typeof(SkillDef), typeof(bool))]
 [HarmonyPriority(0)]
-public class QualityUtility_GenerateQualityCreatedByPawn
+public static class QualityUtility_GenerateQualityCreatedByPawn
 {
     public static void Postfix(ref QualityCategory __result, Pawn pawn)
     {
